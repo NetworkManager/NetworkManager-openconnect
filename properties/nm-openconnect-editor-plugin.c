@@ -229,6 +229,11 @@ import (NMVpnEditorPlugin *iface, const char *path, GError **error)
 	if (buf)
 		nm_setting_vpn_add_data_item (s_vpn, NM_OPENCONNECT_KEY_PROXY, buf);
 
+	/* UserAgent */
+	buf = g_key_file_get_string (keyfile, "openconnect", "UserAgent", NULL);
+	if (buf)
+		nm_setting_vpn_add_data_item (s_vpn, NM_OPENCONNECT_KEY_USERAGENT, buf);
+
 	/* Cisco Secure Desktop */
 	bval = g_key_file_get_boolean (keyfile, "openconnect", "CSDEnable", NULL);
 	if (bval)
@@ -290,6 +295,7 @@ export (NMVpnEditorPlugin *iface,
 	const char *cacert = NULL;
 	const char *protocol = NULL;
 	const char *proxy = NULL;
+	const char *useragent = NULL;
 	gboolean csd_enable = FALSE;
 	const char *csd_wrapper = NULL;
 	const char *reported_os = NULL;
@@ -337,6 +343,10 @@ export (NMVpnEditorPlugin *iface,
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_OPENCONNECT_KEY_PROXY);
 	if (value && strlen (value))
 		proxy = value;
+
+	value = nm_setting_vpn_get_data_item (s_vpn, NM_OPENCONNECT_KEY_USERAGENT);
+	if (value && strlen (value))
+		useragent = value;
 
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_OPENCONNECT_KEY_CSD_ENABLE);
 	if (value && !strcmp (value, "yes"))
@@ -387,6 +397,7 @@ export (NMVpnEditorPlugin *iface,
 		 "Protocol=%s\n"
 		 "Proxy=%s\n"
 		 "CSDEnable=%s\n"
+		 "UserAgent=%s\n"
 		 "CSDWrapper=%s\n"
 		 "ReportedOS=%s\n"
 		 "UserCertificate=%s\n"
@@ -401,6 +412,7 @@ export (NMVpnEditorPlugin *iface,
 		 /* Protocol */              protocol ? protocol : "anyconnect",
 		 /* Proxy */                 proxy ? proxy : "",
 		 /* Cisco Secure Desktop */  csd_enable ? "1" : "0",
+ 		 /* UserAgent */             useragent ? useragent : "",
 		 /* CSD Wrapper Script */    csd_wrapper ? csd_wrapper : "",
 		 /* Reported OS */           reported_os ? reported_os : "",
 		 /* User Certificate */      usercert ? usercert : "",

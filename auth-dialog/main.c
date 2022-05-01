@@ -1255,6 +1255,10 @@ static int get_config (auth_ui_data *ui_data,
 	if (!g_strcmp0(protocol, "pulse"))
 		ui_data->connect_urlpath = TRUE;
 
+	useragent = g_hash_table_lookup (options, NM_OPENCONNECT_KEY_USERAGENT);
+	if (useragent) 
+		openconnect_set_useragent(vpninfo, OC3DUP(useragent));
+
 	cafile = g_hash_table_lookup (options, NM_OPENCONNECT_KEY_CACERT);
 	if (cafile)
 		openconnect_set_cafile(vpninfo, OC3DUP (cafile));

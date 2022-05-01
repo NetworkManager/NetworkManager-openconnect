@@ -460,6 +460,11 @@ update_connection (NMVpnEditor *iface,
 	if (str && strlen (str))
 		nm_setting_vpn_add_data_item (s_vpn, NM_OPENCONNECT_KEY_PROXY, str);
 
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "user_agent_entry"));
+	str = (char *) gtk_editable_get_text (GTK_EDITABLE (widget));
+	if (str && strlen (str))
+		nm_setting_vpn_add_data_item (s_vpn, NM_OPENCONNECT_KEY_USERAGENT, str);
+
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "fsid_button"));
 	str = gtk_check_button_get_active (GTK_CHECK_BUTTON (widget))?"yes":"no";
 	nm_setting_vpn_add_data_item (s_vpn, NM_OPENCONNECT_KEY_PEM_PASSPHRASE_FSID, str);
