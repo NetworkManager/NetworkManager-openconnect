@@ -1028,7 +1028,7 @@ msgstr "Fout bij ophalen van HTTPS-antwoord\n"
 #: ../openconnect-strings.txt:557
 #, c-format
 msgid "VPN service unavailable; reason: %s\n"
-msgstr "VPN-diesnt niet beschikbaar; reden:%s\n"
+msgstr "VPN-dienst niet beschikbaar; reden: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/07386df8c6:/cstp.c#l354
 #: ../openconnect-strings.txt:560
