@@ -34,7 +34,6 @@
   - cd NetworkManager-openconnect-*/
   - ./configure
     --disable-silent-rules
-    --without-libnm-glib
   - make -j
   - make -j check
   - make -j install

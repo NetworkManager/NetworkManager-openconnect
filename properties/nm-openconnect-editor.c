@@ -107,8 +107,8 @@ check_validity (OpenconnectEditor *self, GError **error)
 	str = gtk_editable_get_text (GTK_EDITABLE (widget));
 	if (!str || !strlen (str)) {
 		g_set_error (error,
-		             NMV_EDITOR_PLUGIN_ERROR,
-		             NMV_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY,
+		             NM_CONNECTION_ERROR,
+		             NM_CONNECTION_ERROR_INVALID_PROPERTY,
 		             NM_OPENCONNECT_KEY_GATEWAY);
 		return FALSE;
 	}
@@ -119,8 +119,8 @@ check_validity (OpenconnectEditor *self, GError **error)
 	if (str && str[0] &&
 		strncmp(str, "socks://", 8) && strncmp(str, "http://", 7)) {
 		g_set_error (error,
-		             NMV_EDITOR_PLUGIN_ERROR,
-		             NMV_EDITOR_PLUGIN_ERROR_INVALID_PROPERTY,
+		             NM_CONNECTION_ERROR,
+		             NM_CONNECTION_ERROR_INVALID_PROPERTY,
 		             NM_OPENCONNECT_KEY_PROXY);
 		return FALSE;
 	}
@@ -618,7 +618,7 @@ nm_vpn_editor_new (NMConnection *connection, GError **error)
 
 	object = g_object_new (OPENCONNECT_TYPE_EDITOR, NULL);
 	if (!object) {
-		g_set_error (error, NMV_EDITOR_PLUGIN_ERROR, 0, "could not create openconnect object");
+		g_set_error (error, NM_CONNECTION_ERROR, 0, "could not create openconnect object");
 		return NULL;
 	}
 
@@ -637,7 +637,7 @@ nm_vpn_editor_new (NMConnection *connection, GError **error)
 
 	priv->widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "openconnect-vbox"));
 	if (!priv->widget) {
-		g_set_error (error, NMV_EDITOR_PLUGIN_ERROR, 0, "could not load UI widget");
+		g_set_error (error, NM_CONNECTION_ERROR, 0, "could not load UI widget");
 		g_object_unref (object);
 		return NULL;
 	}
@@ -696,8 +696,6 @@ openconnect_editor_interface_init (NMVpnEditorInterface *iface_class)
 
 /*****************************************************************************/
 
-#ifndef NM_VPN_OLD
-
 #include "nm-openconnect-editor-plugin.h"
 
 G_MODULE_EXPORT NMVpnEditor *
@@ -709,5 +707,3 @@ nm_vpn_editor_factory_openconnect (NMVpnEditorPlugin *editor_plugin,
 
 	return nm_vpn_editor_new (connection, error);
 }
-#endif
-

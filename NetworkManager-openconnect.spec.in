@@ -8,13 +8,6 @@
 
 %global tagver @VERSION@
 
-%if 0%{?fedora} < 28 && 0%{?rhel} < 8
-%bcond_without libnm_glib
-%else
-# Disable the legacy version by default
-%bcond_with libnm_glib
-%endif
-
 %if 0%{?fedora} < 36 && 0%{?rhel} < 10
 %bcond_with gtk4
 %else
@@ -54,11 +47,6 @@ BuildRequires: intltool gettext libtool
 BuildRequires: pkgconfig(libxml-2.0)
 BuildRequires: pkgconfig(openconnect) >= %{openconnect_version}
 BuildRequires: pkgconfig(gcr-3) >= 3.4
-%if %{with libnm_glib}
-BuildRequires: pkgconfig(libnm-util) >= %{nm_version}
-BuildRequires: pkgconfig(libnm-glib) >= %{nm_version}
-BuildRequires: pkgconfig(libnm-glib-vpn) >= %{nm_version}
-%endif
 %if %with gtk4
 BuildRequires: pkgconfig(gtk4) >= 4.0
 BuildRequires: pkgconfig(libnma-gtk4) >= 1.8.33
@@ -108,11 +96,6 @@ fi
 %configure \
         --enable-more-warnings=yes \
         --disable-static \
-%if %{with libnm_glib}
-        --with-libnm-glib \
-%else
-        --without-libnm-glib \
-%endif
 %if %with gtk4
         --with-gtk4 \
 %endif
@@ -164,11 +147,6 @@ fi
 
 %if %with gtk4
 %{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-openconnect-editor.so
-%endif
-
-%if %{with libnm_glib}
-%{_libdir}/NetworkManager/libnm-*-properties.so
-%{_sysconfdir}/NetworkManager/VPN/nm-openconnect-service.name
 %endif
 
 

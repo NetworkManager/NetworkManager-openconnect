@@ -44,14 +44,10 @@
 #define openconnect_has_oath_support() 0
 #endif
 
-#ifdef NM_VPN_OLD
-# include "nm-openconnect-editor.h"
-#else
-# if NM_CHECK_VERSION(1,3,0)
-#  include "nm-utils/nm-vpn-editor-plugin-call.h"
-# endif
-# include "nm-utils/nm-vpn-plugin-utils.h"
+#if NM_CHECK_VERSION(1,3,0)
+# include "nm-utils/nm-vpn-editor-plugin-call.h"
 #endif
+#include "nm-utils/nm-vpn-plugin-utils.h"
 
 #if OPENCONNECT_CHECK_VER(5,5)
 # define OPENCONNECT_PLUGIN_NAME    _("Multi-protocol VPN client (openconnect)")
@@ -474,7 +470,6 @@ get_capabilities (NMVpnEditorPlugin *iface)
 	        NM_VPN_EDITOR_PLUGIN_CAPABILITY_IPV6);
 }
 
-#ifndef NM_VPN_OLD
 #if NM_CHECK_VERSION(1,3,0)
 static void
 notify_plugin_info_set (NMVpnEditorPlugin *plugin,
@@ -546,7 +541,6 @@ NM_VPN_EDITOR_PLUGIN_VT_DEFINE (vt, _get_vt,
 	.fcn_get_service_add_details = _vt_impl_get_service_add_details,
 	.fcn_get_service_add_detail  = _vt_impl_get_service_add_detail,
 )
-#endif
 
 static NMVpnEditor *
 _call_editor_factory (gpointer factory,
@@ -582,9 +576,6 @@ get_editor (NMVpnEditorPlugin *iface, NMConnection *connection, GError **error)
 		editor = "libnm-gtk4-vpn-plugin-openconnect-editor.so";
 	}
 
-#ifdef NM_VPN_OLD
-	return nm_vpn_editor_new (connection, error);
-#else
 	return nm_vpn_plugin_utils_load_editor (editor,
 	                                        "nm_vpn_editor_factory_openconnect",
 	                                        _call_editor_factory,
@@ -592,7 +583,6 @@ get_editor (NMVpnEditorPlugin *iface, NMConnection *connection, GError **error)
 	                                        connection,
 	                                        NULL,
 	                                        error);
-#endif
 }
 
 static void
@@ -663,11 +653,9 @@ openconnect_editor_plugin_interface_init (NMVpnEditorPluginInterface *iface_clas
 	iface_class->get_capabilities = get_capabilities;
 	iface_class->import_from_file = import;
 	iface_class->export_to_file = export;
-#ifndef NM_VPN_OLD
 #if NM_CHECK_VERSION(1,3,0)
 	iface_class->notify_plugin_info_set = notify_plugin_info_set;
 	iface_class->get_vt = _get_vt;
-#endif
 #endif
 }
 

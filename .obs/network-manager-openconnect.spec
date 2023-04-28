@@ -72,7 +72,6 @@ fi
 %configure \
         --enable-more-warnings=yes \
         --disable-static \
-        --without-libnm-glib \
 %if %with gtk4
         --with-gtk4 \
 %endif
