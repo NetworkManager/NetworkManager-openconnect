@@ -64,9 +64,6 @@ plugindir = $(libdir)/NetworkManager
 plugin_LTLIBRARIES += properties/libnm-vpn-plugin-openconnect.la
 if WITH_GNOME
 plugin_LTLIBRARIES += properties/libnm-vpn-plugin-openconnect-editor.la
-if WITH_LIBNM_GLIB
-plugin_LTLIBRARIES += properties/libnm-openconnect-properties.la
-endif
 endif
 if WITH_GTK4
 plugin_LTLIBRARIES += properties/libnm-gtk4-vpn-plugin-openconnect-editor.la
@@ -198,32 +195,7 @@ properties_libnm_gtk4_vpn_plugin_openconnect_editor_la_LDFLAGS = \
 
 ###############################################################################
 
-properties_libnm_openconnect_properties_la_SOURCES = \
-	$(plugin_sources) \
-	$(editor_sources)
-
-nodist_properties_libnm_openconnect_properties_la_SOURCES = \
-	properties/resources.h \
-	properties/resources.c
-
-properties_libnm_openconnect_properties_la_CFLAGS = \
-	-DNM_VPN_OLD \
-	-DNETWORKMANAGER_COMPILATION=NM_NETWORKMANAGER_COMPILATION_LIB \
-	$(properties_cppflags) \
-	$(GTK_CFLAGS) \
-	$(LIBNM_GLIB_CFLAGS)
-
-properties_libnm_openconnect_properties_la_LIBADD = \
-	$(GTK_LIBS) \
-	$(LIBNM_GLIB_LIBS) \
-	$(OPENCONNECT_LIBS)
-
-properties_libnm_openconnect_properties_la_LDFLAGS = \
-	-avoid-version \
-	-Wl,--version-script="$(srcdir)/properties/libnm-openconnect-properties.ver"
-
 EXTRA_DIST += \
-	properties/libnm-openconnect-properties.ver \
 	properties/libnm-vpn-plugin-openconnect.ver \
 	properties/libnm-vpn-plugin-openconnect-editor.ver \
 	properties/nm-openconnect-dialog.ui
@@ -261,21 +233,6 @@ auth_dialog_nm_openconnect_auth_dialog_LDADD = \
 	$(LIBXML_LIBS) \
 	$(LIBSECRET_LIBS)
 
-
-if WITH_LIBNM_GLIB
-# Install a file with full path to plugins for an old gnome-shell
-# https://bugzilla.gnome.org/show_bug.cgi?id=693590
-install-data-hook:
-	mkdir -p $(DESTDIR)$(sysconfdir)/NetworkManager/VPN
-	sed -e "1s|^|# This file is obsoleted by a file in $(NM_VPN_SERVICE_DIR)\n\n|" \
-	    -e 's|[@]LIBEXECDIR[@]|$(libexecdir)|g' \
-	    -e 's|[@]PLUGINDIR[@]|@NM_PLUGIN_DIR@|g' \
-	    <$(srcdir)/nm-openconnect-service.name.in \
-	    >$(DESTDIR)$(sysconfdir)/NetworkManager/VPN/nm-openconnect-service.name
-
-uninstall-hook:
-	 rm -f $(DESTDIR)$(sysconfdir)/NetworkManager/VPN/nm-openconnect-service.name
-endif
 
 appdatadir = $(datadir)/metainfo
 appdata_files = $(appdata_in_files:.xml.in=.xml)
