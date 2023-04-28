@@ -44,6 +44,7 @@
     - tar xJf NetworkManager-openconnect-*.tar.xz
     - cd NetworkManager-openconnect-*/
     - ./configure
+      --enable-more-warnings=error
       --disable-silent-rules
       --without-libnm-glib
     - make -j
