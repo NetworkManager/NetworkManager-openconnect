@@ -222,7 +222,7 @@ NM_G_ERROR_MSG (GError *error)
 
 /* Beware that this does short-circuit evaluation (use "||" instead of "|")
  * which has a possibly unexpected non-function-like behavior.
- * Use NM_IN_SET_SE if you need all arguments to be evaluted. */
+ * Use NM_IN_SET_SE if you need all arguments to be evaluated. */
 #define NM_IN_SET(x, ...)               _NM_IN_SET_EVAL_N(||, x, NM_NARG (__VA_ARGS__), __VA_ARGS__)
 
 /* "SE" stands for "side-effect". Contrary to NM_IN_SET(), this does not do
@@ -287,7 +287,7 @@ _NM_IN_STRSET_streq (const char *x, const char *s)
 
 /* Beware that this does short-circuit evaluation (use "||" instead of "|")
  * which has a possibly unexpected non-function-like behavior.
- * Use NM_IN_STRSET_SE if you need all arguments to be evaluted. */
+ * Use NM_IN_STRSET_SE if you need all arguments to be evaluated. */
 #define NM_IN_STRSET(x, ...)               _NM_IN_STRSET_EVAL_N(||, x, NM_NARG (__VA_ARGS__), __VA_ARGS__)
 
 /* "SE" stands for "side-effect". Contrary to NM_IN_STRSET(), this does not do
@@ -369,7 +369,7 @@ static inline void
 nm_g_object_unref (gpointer obj)
 {
 	/* g_object_unref() doesn't accept NULL. Usully, we workaround that
-	 * by using g_clear_object(), but sometimes that is not convinient
+	 * by using g_clear_object(), but sometimes that is not convenient
 	 * (for example as as destroy function for a hash table that can contain
 	 * NULL values). */
 	if (obj)
@@ -595,7 +595,7 @@ nm_decode_version (guint version, guint *major, guint *minor, guint *micro) {
 
 /**
  * The boolean type _Bool is C99 while we mostly stick to C89. However, _Bool is too
- * convinient to miss and is effectively available in gcc and clang. So, just use it.
+ * convenient to miss and is effectively available in gcc and clang. So, just use it.
  *
  * Usually, one would include "stdbool.h" to get the "bool" define which aliases
  * _Bool. We provide this define here, because we want to make use of it anywhere.
@@ -607,7 +607,7 @@ nm_decode_version (guint version, guint *major, guint *minor, guint *micro) {
  *   is a typedef for gint). Especially when having boolean fields in a struct, we can
  *   thereby easily save some space.
  *
- * - _Bool type guarantees that two "true" expressions compare equal. E.g. the follwing
+ * - _Bool type guarantees that two "true" expressions compare equal. E.g. the following
  *   will not work:
  *        gboolean v1 = 1;
  *        gboolean v2 = 2;
