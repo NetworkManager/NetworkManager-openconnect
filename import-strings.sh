@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "$OPENCONNECT_DIR" = "" ]; then
     OPENCONNECT_DIR=../openconnect
