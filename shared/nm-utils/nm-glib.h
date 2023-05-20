@@ -132,7 +132,7 @@ __g_type_ensure (GType type)
                                         } G_STMT_END
 #endif
 
-/* Rumtime check for glib version. First do a compile time check which
+/* Runtime check for glib version. First do a compile time check which
  * (if satisfied) shortcuts the runtime check. */
 #define nm_glib_check_version(major, minor, micro) \
     (   GLIB_CHECK_VERSION ((major), (minor), (micro)) \

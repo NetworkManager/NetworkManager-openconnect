@@ -468,7 +468,7 @@ get_ip6_routes (gboolean *defaultroute)
  * TUNDEV                 -- tunnel device (always present)
  * INTERNAL_IP4_ADDRESS   -- address (always present)
  * INTERNAL_IP4_NETMASK   -- netmask (often unset)
- * INTERNAL_IP4_DNS       -- list of dns serverss
+ * INTERNAL_IP4_DNS       -- list of dns servers
  * INTERNAL_IP4_NBNS      -- list of wins servers
  * CISCO_DEF_DOMAIN       -- default domain name
  * CISCO_SPLIT_DNS        -- default domain name
