@@ -264,6 +264,11 @@ import (NMVpnEditorPlugin *iface, const char *path, GError **error)
 	if (true)
 		nm_setting_vpn_add_data_item (s_vpn, NM_OPENCONNECT_KEY_PREVENT_INVALID_CERT, "yes");
 
+	/* Don't use system proxy settings during authentication */
+	bval = g_key_file_get_boolean (keyfile, "openconnect", "DontUseProxyAuth", NULL);
+	if (true)
+		nm_setting_vpn_add_data_item (s_vpn, NM_OPENCONNECT_DONT_USE_PROXY_AUTHENTICATION, "yes");
+
 	/* Soft token mode */
 	buf = g_key_file_get_string (keyfile, "openconnect", "StokenSource", NULL);
 	if (buf)
@@ -363,6 +368,10 @@ export (NMVpnEditorPlugin *iface,
 		pem_passphrase_fsid = TRUE;
 
 	value = nm_setting_vpn_get_data_item (s_vpn, NM_OPENCONNECT_KEY_PREVENT_INVALID_CERT);
+	if (value && !strcmp (value, "yes"))
+		prevent_invalid_cert = TRUE;
+
+	value = nm_setting_vpn_get_data_item (s_vpn, NM_OPENCONNECT_DONT_USE_PROXY_AUTHENTICATION);
 	if (value && !strcmp (value, "yes"))
 		prevent_invalid_cert = TRUE;
 

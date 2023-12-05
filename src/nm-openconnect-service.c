@@ -88,6 +88,7 @@ static const ValidProperty valid_properties[] = {
 	{ NM_OPENCONNECT_KEY_MTU,         G_TYPE_STRING, 0, 0 },
 	{ NM_OPENCONNECT_KEY_PEM_PASSPHRASE_FSID, G_TYPE_BOOLEAN, 0, 0 },
 	{ NM_OPENCONNECT_KEY_PREVENT_INVALID_CERT, G_TYPE_BOOLEAN, 0, 0 },
+	{ NM_OPENCONNECT_DONT_USE_PROXY_AUTHENTICATION, G_TYPE_BOOLEAN, 0, 0 },
 	{ NM_OPENCONNECT_KEY_PROTOCOL,    G_TYPE_STRING, 0, 0 },
 	{ NM_OPENCONNECT_KEY_PROXY,       G_TYPE_STRING, 0, 0 },
 	{ NM_OPENCONNECT_KEY_CSD_ENABLE,  G_TYPE_BOOLEAN, 0, 0 },
@@ -603,7 +604,7 @@ real_need_secrets (NMVpnServicePlugin *plugin,
 	}
 
 	/* We just need the WebVPN cookie, and the final IP address of the gateway
-	   (after HTTP redirects, which do happen). All the certificate/SecurID 
+	   (after HTTP redirects, which do happen). All the certificate/SecurID
 	   nonsense can be handled for us, in the user's context, by auth-dialog */
 	if (!nm_setting_vpn_get_secret (s_vpn, NM_OPENCONNECT_KEY_GATEWAY)) {
 		*setting_name = NM_SETTING_VPN_SETTING_NAME;

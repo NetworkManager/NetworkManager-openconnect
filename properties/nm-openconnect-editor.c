@@ -364,7 +364,17 @@ init_editor_plugin (OpenconnectEditor *self, NMConnection *connection, GError **
 	}
 	g_signal_connect (G_OBJECT (widget), "toggled", G_CALLBACK (stuff_changed_cb), self);
 
-	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "csd_button"));
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "dont_use_proxy_for_authentication"));
+	g_return_val_if_fail (widget, FALSE);
+
+	if (s_vpn) {
+		value = nm_setting_vpn_get_data_item (s_vpn, NM_OPENCONNECT_DONT_USE_PROXY_AUTHENTICATION);
+		if (value && !strcmp(value, "yes"))
+			gtk_check_button_set_active (GTK_CHECK_BUTTON (widget), TRUE);
+	}
+	g_signal_connect (G_OBJECT (widget), "toggled", G_CALLBACK (stuff_changed_cb), self);
+
+        widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "csd_button"));
 	g_return_val_if_fail (widget, FALSE);
 
 	if (s_vpn) {
@@ -467,6 +477,10 @@ update_connection (NMVpnEditor *iface,
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "prevent_invalid_cert_button"));
 	str = gtk_check_button_get_active (GTK_CHECK_BUTTON (widget))?"yes":"no";
 	nm_setting_vpn_add_data_item (s_vpn, NM_OPENCONNECT_KEY_PREVENT_INVALID_CERT, str);
+
+	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "dont_use_proxy_for_authentication"));
+	str = gtk_check_button_get_active (GTK_CHECK_BUTTON (widget))?"yes":"no";
+	nm_setting_vpn_add_data_item (s_vpn, NM_OPENCONNECT_DONT_USE_PROXY_AUTHENTICATION, str);
 
 	widget = GTK_WIDGET (gtk_builder_get_object (priv->builder, "csd_button"));
 	str = gtk_check_button_get_active (GTK_CHECK_BUTTON (widget))?"yes":"no";
