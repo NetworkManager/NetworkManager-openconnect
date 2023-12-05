@@ -325,6 +325,23 @@
       </packing>
     </child>
     <child>
+      <object class="GtkCheckButton" id="dont_use_proxy_for_authentication">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="label" translatable="yes">Don't use system proxy settings during authentication</property>
+        <property name="use_underline">True</property>
+        <property name="focus_on_click">True</property>
+        <property name="active">False</property>
+        <property name="inconsistent">False</property>
+        <property name="draw_indicator">True</property>
+      </object>
+      <packing>
+        <property name="left_attach">0</property>
+        <property name="top_attach">13</property>
+        <property name="width">2</property>
+      </packing>
+    </child>
+    <child>
       <object class="GtkLabel" id="token_label">
         <property name="visible">False</property>
         <property name="label" translatable="yes">Software Token Authentication</property>
@@ -344,7 +361,7 @@
       </object>
       <packing>
           <property name="left_attach">0</property>
-          <property name="top_attach">13</property>
+          <property name="top_attach">14</property>
           <property name="width">2</property>
       </packing>
     </child>
@@ -366,7 +383,7 @@
       </object>
       <packing>
         <property name="left_attach">0</property>
-        <property name="top_attach">14</property>
+        <property name="top_attach">15</property>
       </packing>
     </child>
     <child>
@@ -384,7 +401,7 @@
       </object>
       <packing>
         <property name="left_attach">1</property>
-        <property name="top_attach">14</property>
+        <property name="top_attach">15</property>
       </packing>
     </child>
     <child>
@@ -406,7 +423,7 @@
       </object>
       <packing>
         <property name="left_attach">0</property>
-        <property name="top_attach">15</property>
+        <property name="top_attach">16</property>
       </packing>
     </child>
     <child>
