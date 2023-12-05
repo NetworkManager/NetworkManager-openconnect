@@ -746,8 +746,11 @@ static gboolean open_webview_idle(gpointer data)
 	webView = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
 	dm = webkit_web_view_get_website_data_manager(webView);
-	if (dm)
+	if (dm) {
 		cm = webkit_website_data_manager_get_cookie_manager(dm);
+                // Ensure that proxies won't be used on auth dialog
+                webkit_website_data_manager_set_network_proxy_settings(dm, WEBKIT_NETWORK_PROXY_MODE_NO_PROXY, NULL);
+        }
 	if (cm)
 		storage = g_string_new (g_get_user_data_dir());
 	if (storage)
