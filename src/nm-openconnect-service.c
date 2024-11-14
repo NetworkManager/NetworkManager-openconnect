@@ -184,7 +184,7 @@ validate_one_property (const char *key, const char *value, gpointer user_data)
 			             NM_VPN_PLUGIN_ERROR_BAD_ARGUMENTS,
 			             _("invalid integer property “%s” or out of range [%d -> %d]"),
 			             key, prop.int_min, prop.int_max);
-			break;
+			return;
 		case G_TYPE_BOOLEAN:
 			if (!strcmp (value, "yes") || !strcmp (value, "no"))
 				return; /* valid */
@@ -194,21 +194,19 @@ validate_one_property (const char *key, const char *value, gpointer user_data)
 			             NM_VPN_PLUGIN_ERROR_BAD_ARGUMENTS,
 			             _("invalid boolean property “%s” (not yes or no)"),
 			             key);
-			break;
+			return;
 		default:
 			g_set_error (info->error,
 			             NM_VPN_PLUGIN_ERROR,
 			             NM_VPN_PLUGIN_ERROR_BAD_ARGUMENTS,
 			             _("unhandled property “%s” type %s"),
 			             key, g_type_name (prop.type));
-			break;
+			return;
 		}
 	}
 
 	/* Did not find the property from valid_properties or the type did not match */
 	if (!info->table[i].name && strncmp(key, "form:", 5)) {
-		_LOGW ("property '%s' unknown", key);
-		if (0)
 		g_set_error (info->error,
 		             NM_VPN_PLUGIN_ERROR,
 		             NM_VPN_PLUGIN_ERROR_BAD_ARGUMENTS,
