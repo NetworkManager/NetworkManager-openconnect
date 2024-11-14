@@ -42,6 +42,9 @@
   script:
     - dnf -y install make
     - tar xJf NetworkManager-openconnect-*.tar.xz
+    # Sometimes the CI builder clocks are skewed.
+    # Make sure the dst files are not from future.
+    - find |xargs touch
     - cd NetworkManager-openconnect-*/
     - ./configure
       --disable-silent-rules
