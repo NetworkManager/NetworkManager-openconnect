@@ -5,28 +5,40 @@
 # https://gitlab.gnome.org/GNOME/NetworkManager-openconnect/-/ci/lint
 
 .fedora_deps: &fedora_deps
-  before_script:
-    - dnf -y install 'dnf-command(copr)'
-    - dnf -y copr enable dwmw2/openconnect
-    - dnf -y install
-      file
-      findutils
-      gcc
-      gcr-devel
-      gcr3-devel
-      gettext-devel
-      glib2-devel
-      gtk4-devel
-      intltool
-      libtool
-      libsecret-devel
-      libnma-devel
-      NetworkManager-libnm-devel
-      pkgconfig
-      libxml2-devel
-      openconnect-devel
-      webkit2gtk3-devel
-      webkit2gtk4.1-devel
+  - dnf -y install
+    file
+    findutils
+    gcc
+    gcr-devel
+    gcr3-devel
+    gettext-devel
+    glib2-devel
+    gtk4-devel
+    intltool
+    libtool
+    libsecret-devel
+    libnma-devel
+    NetworkManager-libnm-devel
+    pkgconfig
+    libxml2-devel
+    openconnect-devel
+    webkit2gtk3-devel
+    webkit2gtk4.1-devel
+
+.fedora_from_dist: &fedora_from_dist
+  - dnf -y install make
+  - tar xJf NetworkManager-openconnect-*.tar.xz
+  # Sometimes the CI builder clocks are skewed.
+  # Make sure the dst files are not from future.
+  - find |xargs touch
+  - cd NetworkManager-openconnect-*/
+  - ./configure
+    --disable-silent-rules
+    --without-libnm-glib
+  - make -j
+  - make -j check
+  - make -j install
+  - make -j uninstall
 
 # Disable fetching Git, run after the tarball is rolled
 .dist: &dist
@@ -36,29 +48,12 @@
   variables:
     GIT_STRATEGY: none
 
-.fedora_from_dist: &fedora_from_dist
-  <<: *fedora_deps
-  <<: *dist
-  script:
-    - dnf -y install make
-    - tar xJf NetworkManager-openconnect-*.tar.xz
-    # Sometimes the CI builder clocks are skewed.
-    # Make sure the dst files are not from future.
-    - find |xargs touch
-    - cd NetworkManager-openconnect-*/
-    - ./configure
-      --disable-silent-rules
-      --without-libnm-glib
-    - make -j
-    - make -j check
-    - make -j install
-    - make -j uninstall
-
 # Roll the distribution tarball
 fedora37_dist:
-  <<: *fedora_deps
   image: fedora:37
   stage: build
+  before_script:
+    - *fedora_deps
   script:
     - dnf -y install
       /usr/bin/autopoint
@@ -71,6 +66,28 @@ fedora37_dist:
     paths:
       - "*.xz"
 
+fedora37_from_dist:
+  image: fedora:37
+  <<: *dist
+  before_script:
+    - *fedora_deps
+  script:
+    - *fedora_from_dist
+
 fedora_from_dist:
-  <<: *fedora_from_dist
   image: fedora:latest
+  <<: *dist
+  before_script:
+    - *fedora_deps
+  script:
+    - *fedora_from_dist
+
+latest_from_dist:
+  image: fedora:latest
+  <<: *dist
+  before_script:
+    - dnf -y install 'dnf-command(copr)'
+    - dnf -y copr enable dwmw2/openconnect
+    - *fedora_deps
+  script:
+    - *fedora_from_dist
