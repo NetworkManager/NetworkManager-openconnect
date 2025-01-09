@@ -1383,7 +1383,7 @@ msgstr "Kratek zapis pri zapisovanju paketa BYE\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/e33b27beb:/digest.c#l27
 #: ../openconnect-strings.txt:739
 msgid "Attempting Digest authentication to proxy\n"
-msgstr "Poskus preverjanja pristnosti Digest na posredniškim strežniku"
+msgstr "Poskus preverjanja pristnosti Digest na posredniškim strežniku\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/06723682f:/digest.c#l257
 #: ../openconnect-strings.txt:742
