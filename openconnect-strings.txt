@@ -299,8 +299,11 @@ _("unknown");
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/8e7efd51f:/auth-globalprotect.c#l264
 _("%d gateway servers available:\n");
 
-// https://git.infradead.org/users/dwmw2/openconnect.git/blob/8e7efd51f:/auth-globalprotect.c#l286
-_("  %s (%s)\n");
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/e39b2cc48:/auth-globalprotect.c#l616
+_("  %s (%s) [priority %d]\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/e39b2cc48:/auth-globalprotect.c#l619
+_("  %s (%s) [unprioritized]\n");
 
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/8e7efd51f:/auth-globalprotect.c#l355
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/5ebfec224:/auth-juniper.c#l548
@@ -1690,6 +1693,9 @@ _("SSO token decryption failed: %s\n");
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/8bacc334b:/gnutls.c#l3140
 _("Failed to decode STRAP key: %s\n");
 
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/94e0b16c0:/gnutls.c#l3189
+_("Failed to generate channel bindings for STRAP key: %s\n");
+
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/222178086:/gnutls.c#l3129
 _("Failed to regenerate STRAP key: %s\n");
 
@@ -1987,10 +1993,15 @@ _("Non-standard SSL tunnel path: %s\n");
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/8e7efd51f:/gpst.c#l400
 _("Tunnel timeout (rekey interval) is %d minutes.\n");
 
-// https://git.infradead.org/users/dwmw2/openconnect.git/blob/a9fc48bd2:/gpst.c#l417
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/bbcbd778c:/gpst.c#l472
 _(""
-"Gateway address in config XML (%s) differs from external gateway address "
-"(%s).\n");
+"Legacy IP gateway address in config XML (%s) differs from external gateway "
+"address (%s).\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/bbcbd778c:/gpst.c#l481
+_(""
+"IPv6 gateway address in config XML (%s) differs from external gateway "
+"address (%s).\n");
 
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/c3c2565bc:/gpst.c#l516
 _(""
@@ -2349,6 +2360,9 @@ _("HTTPS socket closed by peer; reopening\n");
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/01ef9ea90:/http.c#l1091
 _("Retrying failed %s request on new connection\n");
 
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/603c56df7:/http.c#l984
+_("Unexpected empty response body from server\n");
+
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/eef00ae2f:/http.c#l919
 _("request granted");
 
@@ -2622,6 +2636,10 @@ _("Default vpnc-script (override with --script):");
 
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/9ec9dc6c7:/main.c#l716
 _("Override hostname '%s' to '%s'\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/242b1d4ab:/main.c#l981
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/eef00ae2f:/ssl.c#l974
+_("getaddrinfo failed for host '%s': %s\n");
 
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/638a35eb5:/main.c#l146
 _("Usage:  openconnect [options] <server>\n");
@@ -3929,6 +3947,9 @@ _("SSO token decryption failed\n");
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/958a59aed:/openssl.c#l2525
 _("SSL Finished message too large (%zu bytes)\n");
 
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/94e0b16c0:/openssl.c#l2540
+_("Failed to generate channel bindings for STRAP key\n");
+
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/222178086:/openssl.c#l2458
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/222178086:/openssl.c#l2495
 _("STRAP signature failed\n");
@@ -4564,9 +4585,6 @@ _("Failed to reconnect to host %s: %s\n");
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/eef00ae2f:/ssl.c#l943
 _("Proxy from libproxy: %s://%s:%d/\n");
 
-// https://git.infradead.org/users/dwmw2/openconnect.git/blob/eef00ae2f:/ssl.c#l974
-_("getaddrinfo failed for host '%s': %s\n");
-
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/2f55fec32:/ssl.c#l258
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/2f55fec32:/ssl.c#l342
 _("Reconnecting to DynDNS server using previously cached IP address\n");
@@ -4656,6 +4674,7 @@ _("Failed select() for command socket");
 _("%s() used with unsupported mode '%s'\n");
 
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/848ceff1d:/ssl.c#l931
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/f359a42a9:/tun-win32.c#l570
 _("Failed to open %s: %s\n");
 
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/848ceff1d:/ssl.c#l938
@@ -4788,11 +4807,31 @@ _("Invalid PIN format; try again.\n");
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/465198ce3:/stoken.c#l299
 _("Generating RSA token code\n");
 
-// https://git.infradead.org/users/dwmw2/openconnect.git/blob/62558f59a:/tun-win32.c#l70
-_("Error accessing registry key for network adapters\n");
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/f359a42a9:/tun-win32.c#l102
+_("Cannot allocate memory for adapter info\n");
 
-// https://git.infradead.org/users/dwmw2/openconnect.git/blob/0be961a51:/tun-win32.c#l101
-_("Cannot read %s\\%s or is not string\n");
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/f359a42a9:/tun-win32.c#l139
+_("Ignoring non-matching interface \"%S\"\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/fde5f7d96:/tun-win32.c#l235
+_("Interface \"%S\" is not supported\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/c34334152:/tun-win32.c#l143
+_("Error accessing registry key for network adapters: %s (%ld)\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/c34334152:/tun-win32.c#l168
+_("Cannot open registry key %s: %s (%ld)\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/6dcfbe1b1:/tun-win32.c#l116
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/6dcfbe1b1:/tun-win32.c#l174
+_("Cannot read registry key %s\\%s: value not found\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/6dcfbe1b1:/tun-win32.c#l121
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/6dcfbe1b1:/tun-win32.c#l184
+_("Cannot read registry key %s\\%s: value is not a string (%ld)\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/6dcfbe1b1:/tun-win32.c#l126
+_("Cannot read registry key %s\\%s or is not string: %s (%ld)\n");
 
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/60d1f092e:/tun-win32.c#l118
 _("%s\\ComponentId is unknown '%s'\n");
@@ -4803,8 +4842,18 @@ _("Found %s at %s\n");
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/0be961a51:/tun-win32.c#l131
 _("Cannot open registry key %s\n");
 
-// https://git.infradead.org/users/dwmw2/openconnect.git/blob/0be961a51:/tun-win32.c#l142
-_("Cannot read registry key %s\\%s or is not string\n");
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/6dcfbe1b1:/tun-win32.c#l179
+_(""
+"Cannot read registry key %s\\%s: character buffer too small: %llu chars "
+"required\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/6dcfbe1b1:/tun-win32.c#l189
+_("Cannot read registry key %s\\%s: %s (%ld)\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/f359a42a9:/tun-win32.c#l349
+_(""
+"Access denied creating Wintun adapter. Are you running with Administrator "
+"privileges?\n");
 
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/6096fb0e4:/tun-win32.c#l186
 _(""
@@ -4835,9 +4884,6 @@ _("DeleteUnicastIpAddressEntry() failed: %s\n");
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/4a224cdfc:/tun-win32.c#l337
 _("GetUnicastIpAddressTable() did not find matching address to reclaim\n");
 
-// https://git.infradead.org/users/dwmw2/openconnect.git/blob/7c7ad370b:/tun-win32.c#l129
-_("Failed to open %s\n");
-
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/60d1f092e:/tun-win32.c#l242
 _("Opened tun device %S\n");
 
@@ -4854,9 +4900,6 @@ _("Failed to set TAP IP addresses: %s\n");
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/58e7ea69c:/tun-win32.c#l406
 _("Failed to set TAP media status: %s\n");
 
-// https://git.infradead.org/users/dwmw2/openconnect.git/blob/60d1f092e:/tun-win32.c#l303
-_("Ignoring non-matching interface \"%S\"\n");
-
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/60d1f092e:/tun-win32.c#l326
 _("Could not convert interface name to UTF-8\n");
 
@@ -4869,13 +4912,11 @@ _(""
 "  encounter problems, install the TAP-Windows driver instead. See\n"
 "  %s\n");
 
-// https://git.infradead.org/users/dwmw2/openconnect.git/blob/60d1f092e:/tun-win32.c#l353
-_("Could not construct interface name\n");
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/15e3bd03f:/tun-win32.c#l756
+_("Could not construct interface name for \"%s\"\n");
 
-// https://git.infradead.org/users/dwmw2/openconnect.git/blob/a4d7bf9c5:/tun-win32.c#l393
-_(""
-"Access denied creating Wintun adapter. Are you running with Administrator "
-"privileges?\n");
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/15e3bd03f:/tun-win32.c#l830
+_("Unable to find a usable default adapter name based on hostname.\n");
 
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/48bd28aad:/tun-win32.c#l394
 _(""
@@ -5080,6 +5121,12 @@ _("Could not load wintun.dll\n");
 
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/60d1f092e:/wintun.c#l90
 _("Could not resolve functions from wintun.dll\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/c34334152:/wintun.c#l118
+_("Wintun adapter has not been opened\n");
+
+// https://git.infradead.org/users/dwmw2/openconnect.git/blob/c34334152:/wintun.c#l128
+_("Unable to get Wintun adapter Guid\n");
 
 // https://git.infradead.org/users/dwmw2/openconnect.git/blob/43f078d92:/wintun.c#l143
 _("Loaded Wintun v%lu.%lu\n");
