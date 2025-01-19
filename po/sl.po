@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: network-manager-openconnect master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "openconnect/issues\n"
-"POT-Creation-Date: 2025-01-17 16:15+0000\n"
-"PO-Revision-Date: 2025-01-19 00:04+0100\n"
+"POT-Creation-Date: 2025-01-18 23:05+0000\n"
+"PO-Revision-Date: 2025-01-19 16:44+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -2346,17 +2346,16 @@ msgstr ""
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/526fd5d44:/fortinet.c#l569
 #: ../openconnect-strings.txt:1086
-#, fuzzy
 msgid "Received split routes; not setting default Legacy IP route\n"
 msgstr ""
-"S ponovno povezavo je pridobljen drugačen opuščen naslov IP (%s != %s)\n"
+"Prejete deljene poti; brez nastavljanja privzete poti zastarelega IP-ja\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/526fd5d44:/fortinet.c#l571
 #: ../openconnect-strings.txt:1089
-#, fuzzy
 msgid "No split routes received; setting default Legacy IP route\n"
 msgstr ""
-"Razdeljene poti niso bile prejete; nastavitev privzete podedovane poti IP\n"
+"Deljene poti niso bile prejete; nastavitev privzete poti zastarelega naslova "
+"IP\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/0d79ec0b3:/fortinet.c#l595
 #: ../openconnect-strings.txt:1092
@@ -3250,15 +3249,14 @@ msgstr "Nalaganje potrdila je spodletelo. Opravilo je prekinjeno.\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/7f42c35e5:/gnutls.c#l2282
 #: ../openconnect-strings.txt:1596
-#, fuzzy
 msgid "Failed to construct GnuTLS priority string\n"
-msgstr "Niza prednosti TLS ni mogoče nastaviti: %s\n"
+msgstr "Tvorjenje niza prednosti GnuTLS je spodletelo\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/5b12bfc7b:/gnutls.c#l2254
 #: ../openconnect-strings.txt:1599
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to set GnuTLS priority string (\"%s\"): %s\n"
-msgstr "Niza prednosti TLS ni mogoče nastaviti: %s\n"
+msgstr "Niza prednosti GnuTLS (»%s«) ni možno nastaviti: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/d8cc2eec5:/gnutls.c#l671
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/bf14319ca:/openssl.c#l1068
@@ -6564,16 +6562,16 @@ msgstr "Vrata ESP: %d\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4971447f6:/oncp.c#l809
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l401
 #: ../openconnect-strings.txt:3395
-#, fuzzy, c-format
+#, c-format
 msgid "ESP key lifetime: %u bytes\n"
 msgstr "Življenjska doba ključa ESP: %u bajtov\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4971447f6:/oncp.c#l817
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l393
 #: ../openconnect-strings.txt:3399
-#, fuzzy, c-format
+#, c-format
 msgid "ESP key lifetime: %u seconds\n"
-msgstr "Življenjska doba ključa ESP: %u sekund\n"
+msgstr "Življenjska doba ključa ESP: %u s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4971447f6:/oncp.c#l825
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l425
@@ -6585,9 +6583,9 @@ msgstr "Rezervna možnost ESP v SSL: %u sekunde\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/87f78b4d9:/oncp.c#l606
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l409
 #: ../openconnect-strings.txt:3407
-#, fuzzy, c-format
+#, c-format
 msgid "ESP replay protection: %d\n"
-msgstr "Zaščita pred ponovnim predvajanjem ESP: %d\n"
+msgstr "Zaščita pred ponovitvijo ESP: %d\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c2cb39a6c:/oncp.c#l842
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/35e03f856:/pulse.c#l1774
@@ -6665,17 +6663,16 @@ msgstr "Odziv strežnika na paket imen gostitelja je napaka 0x%02x\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/2823a479a:/oncp.c#l647
 #: ../openconnect-strings.txt:3452
-#, fuzzy
 msgid ""
 "This seems to indicate that the server has disabled support for\n"
 "Juniper's older oNCP protocol, and only allows connections using\n"
 "the newer Junos Pulse protocol. This version of OpenConnect has\n"
 "EXPERIMENTAL support for Pulse using --prot=pulse\n"
 msgstr ""
-"Zdi se, da to pomeni, da je strežnik onemogočil podporo za\n"
+"To najbrž pomeni, da je strežnik onemogočil podporo za\n"
 "Juniperjev starejši protokol oNCP in omogoča povezave samo z uporabo\n"
-"novejši protokol Junos Pulse. Ta različica OpenConnect ima\n"
-"EKSPERIMENTALNA podpora za pulz z uporabo --prot=pulse\n"
+"novejšega protokola Junos Pulse. Ta različica OpenConnect ima\n"
+"EKSPERIMENTALNO podporo za Pulse z uporabo --prot=pulse\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/59e108340:/oncp.c#l384
 #: ../openconnect-strings.txt:3459
@@ -6725,9 +6722,9 @@ msgstr "Zavrženje podedovanega okvira IP sredi konfiguracije oNCP\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/d1b86efd8:/oncp.c#l744
 #: ../openconnect-strings.txt:3483
-#, fuzzy, c-format
+#, c-format
 msgid "Read additional %d bytes of KMP 301 message\n"
-msgstr "Preberite dodatna %d bajta sporočila KMP 301\n"
+msgstr "Prebranih dodatnih %d bajtov sporočila KMP 301\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/cfe8cc43e:/oncp.c#l1215
 #: ../openconnect-strings.txt:3486
@@ -6785,9 +6782,10 @@ msgstr "Dohodno sporočilo KMP %d velikosti %d (prejeto %d)\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47d69d35:/oncp.c#l939
 #: ../openconnect-strings.txt:3518
-#, fuzzy, c-format
+#, c-format
 msgid "Continuing to process KMP message %d now size %d (got %d)\n"
-msgstr "Nadaljevanje obdelave sporočila KMP %d zdaj velikost %d (imam %d)\n"
+msgstr ""
+"Nadaljevanje obdelave sporočila KMP %d, zdaj velikosti %d (pridobljeno %d)\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47d69d35:/oncp.c#l958
 #: ../openconnect-strings.txt:3521
@@ -7108,7 +7106,7 @@ msgstr "Dodelitev medpomnilnika podpisa ni uspela\n"
 #: ../openconnect-strings.txt:3698
 #, fuzzy
 msgid "Failed to sign dummy data to validate EC key\n"
-msgstr "Dodelitev pravil ključu je spodletela: %s\n"
+msgstr "Ni bilo mogoče podpisati lažnih podatkov za potrditev ključa EC\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b3f09ceeb:/openssl-pkcs11.c#l573
 #: ../openconnect-strings.txt:3701
@@ -7137,9 +7135,9 @@ msgstr "Nalaganje osebnega ključa kot PKCS#8 je spodletelo: %s\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/77a91693f:/openssl-pkcs11.c#l593
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/77a91693f:/openssl-pkcs11.c#l599
 #: ../openconnect-strings.txt:3714
-#, fuzzy
 msgid "This version of OpenConnect was built without PKCS#11 support\n"
-msgstr "Ta različica programa OpenConnect je izgrajena brez podpore za TPM\n"
+msgstr ""
+"Ta različica programa OpenConnect je izgrajena brez podpore za PKCS#11\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/ccf17dd06:/openssl.c#l167
 #: ../openconnect-strings.txt:3717
@@ -7205,9 +7203,9 @@ msgstr "Razčlenjevanje PKCS#12 je spodletelo (napaka je navedena zgoraj)\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/0a23a8835:/openssl.c#l650
 #: ../openconnect-strings.txt:3752
-#, fuzzy
 msgid "Parse secondary PKCS#12 failed (see above errors)\n"
-msgstr "Razčlenjevanje PKCS#12 je spodletelo (napaka je navedena zgoraj)\n"
+msgstr ""
+"Razčlenjevanje sekundarnega PKCS#12 je spodletelo (glejte zgornje napake)\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/0a23a8835:/openssl.c#l667
 #: ../openconnect-strings.txt:3755
@@ -7268,9 +7266,9 @@ msgstr "Odpiranje datoteke potrdila %s je spodletelo: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/0a23a8835:/openssl.c#l795
 #: ../openconnect-strings.txt:3789
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to open secondary certificate file %s: %s\n"
-msgstr "Odpiranje datoteke ključa/potrdila %s je spodletelo: %s\n"
+msgstr "Odpiranje datoteke sekundarnega potrdila %s je spodletelo: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/3d2cde338:/openssl.c#l616
 #: ../openconnect-strings.txt:3792
@@ -7279,10 +7277,9 @@ msgstr "Nalaganje potrdila je spodletelo\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/0a23a8835:/openssl.c#l836
 #: ../openconnect-strings.txt:3795
-#, fuzzy
 msgid "Failed to process all supporting certs. Trying anyway...\n"
 msgstr ""
-"Ni uspelo obdelati vseh podpornih potrdil. Kakorkoli že, poskušam ...\n"
+"Ni uspelo obdelati vseh podpornih potrdil. Vseeno poskusi potekajo ...\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/0a23a8835:/openssl.c#l837
 #: ../openconnect-strings.txt:3798
@@ -7661,9 +7658,9 @@ msgstr ""
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l358
 #: ../openconnect-strings.txt:3997
-#, fuzzy, c-format
+#, c-format
 msgid "Received MRU %d from server. Nak-offering larger MRU of %d (our MTU)\n"
-msgstr "Prejel MRU %d od strežnika. Nak-ponudba večjega MRU %d (naš MTU)\n"
+msgstr "Prejet MRU %d s strežnika. Nak-ponuja večji MRU od %d (naš MTU)\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l364
 #: ../openconnect-strings.txt:4000
@@ -7673,9 +7670,9 @@ msgstr "Prejel MRU %d od strežnika. Nastavitev našega MTU, da se ujema.\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l372
 #: ../openconnect-strings.txt:4003
-#, fuzzy, c-format
+#, c-format
 msgid "Received asyncmap of 0x%08x from server\n"
-msgstr "Prejeta asyncmap 0x%08x od strežnika\n"
+msgstr "Prejeti asyncmap 0x%08x s strežnika\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l378
 #: ../openconnect-strings.txt:4006
@@ -7690,9 +7687,8 @@ msgstr "Prejeto stiskanje polja protokola od strežnika\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l388
 #: ../openconnect-strings.txt:4012
-#, fuzzy
 msgid "Received address and control field compression from server\n"
-msgstr "Prejeto stiskanje naslova in kontrolnega polja iz strežnika\n"
+msgstr "S strežnika prejeto stiskanje naslova in kontrolnega polja\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l395
 #: ../openconnect-strings.txt:4015
@@ -7724,15 +7720,15 @@ msgstr "Prejeto neznano %s TLV (oznaka %d, len %d+2) iz strežnika:\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/20f0c2ab4:/ppp.c#l459
 #: ../openconnect-strings.txt:4030
-#, fuzzy, c-format
+#, c-format
 msgid "Received %ld extra bytes at end of Config-Request:\n"
-msgstr "Prejeto %ld dodatnih bajtov na koncu zahteve za konfiguracijo:\n"
+msgstr "Prejetih %ld dodatnih bajtov na koncu Config-Request:\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l461
 #: ../openconnect-strings.txt:4033
-#, fuzzy, c-format
+#, c-format
 msgid "Reject %s/id %d config from server\n"
-msgstr "Nepričakovan odgovor strežnika %d.\n"
+msgstr "Zavrni prilagoditev %s/id %d s strežnika\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l472
 #: ../openconnect-strings.txt:4036
@@ -7772,9 +7768,8 @@ msgstr "Strežnik ni ponudil možnosti šifer DTLS\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l616
 #: ../openconnect-strings.txt:4054
-#, fuzzy
 msgid "Server rejected LCP magic option\n"
-msgstr "Strežnik ni ponudil možnosti šifer DTLS\n"
+msgstr "Strežnik je zavrnil čarobno možnost LCP\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l622
 #: ../openconnect-strings.txt:4057
@@ -7796,10 +7791,9 @@ msgstr "Goli ponujeni naslov IPv4 strežnika: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/285e86157:/ppp.c#l685
 #: ../openconnect-strings.txt:4066
-#, fuzzy, c-format
+#, c-format
 msgid "Server rejected Legacy IP address %s\n"
-msgstr ""
-"S ponovno povezavo je pridobljen drugačen opuščen naslov IP (%s != %s)\n"
+msgstr "Strežnik je zavrnil zastareli naslov IP %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/71bf1d939:/ppp.c#l713
 #: ../openconnect-strings.txt:4069
@@ -7839,9 +7833,9 @@ msgstr "Strežnik zavrnjen/nak'ed %s TLV (oznaka %d, len %d+2)\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/20f0c2ab4:/ppp.c#l721
 #: ../openconnect-strings.txt:4087
-#, fuzzy, c-format
+#, c-format
 msgid "Received %ld extra bytes at end of Config-Reject:\n"
-msgstr "Prejetih %ld dodatnih bajtov na koncu programa Config-Reject:\n"
+msgstr "Prejetih %ld dodatnih bajtov na koncu Config-Reject:\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l739
 #: ../openconnect-strings.txt:4090
@@ -7863,9 +7857,9 @@ msgstr "Strežnik je zavrnil našo zahtevo za prilagoditev IPv%d\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/d2402eb30:/ppp.c#l1016
 #: ../openconnect-strings.txt:4099
-#, fuzzy, c-format
+#, c-format
 msgid "PPP state transition from %s to %s on %s channel\n"
-msgstr "Prehod stanja javno-zasebnega partnerstva z %s na %s na %s kanalu\n"
+msgstr "Prehod stanja PPP iz %s v %s na kanalu %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/76a42bef0:/ppp.c#l1111
 #: ../openconnect-strings.txt:4102
@@ -7874,13 +7868,13 @@ msgstr "Obremenitev PPP presega sprejemni medpomnilnik\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/76a42bef0:/ppp.c#l1150
 #: ../openconnect-strings.txt:4105
-#, fuzzy, c-format
+#, c-format
 msgid "Short packet received (%d bytes). Waiting for more.\n"
-msgstr "Prejeti kratki paket (%d bajtov). Čakam na več.\n"
+msgstr "Prejet kratki paket (%d bajtov). Čakanje na še več.\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a6937b663:/ppp.c#l1033
 #: ../openconnect-strings.txt:4108
-#, fuzzy, c-format
+#, c-format
 msgid "Unexpected pre-PPP packet header for encap %d.\n"
 msgstr "Nepričakovana glava paketa pred PPP za encap %d.\n"
 
@@ -7991,9 +7985,8 @@ msgstr ""
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/04671ef02:/ppp.c#l1599
 #: ../openconnect-strings.txt:4164
-#, fuzzy
 msgid "Establishing PPP tunnel over TLS failed\n"
-msgstr "Vzpostavitev predora za javno-zasebna partnerstva nad TLS ni uspela\n"
+msgstr "Vzpostavitev tunela PPP prek TLS ni uspela\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/04671ef02:/ppp.c#l1610
 #: ../openconnect-strings.txt:4167
@@ -8013,9 +8006,9 @@ msgstr "Preverjanje pristnosti seje DTLS ni uspelo\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l250
 #: ../openconnect-strings.txt:4176
-#, fuzzy, c-format
+#, c-format
 msgid "Received internal Legacy IP address %s\n"
-msgstr "Prejet interni podedovani naslov IP %s\n"
+msgstr "Prejeti interni zastareli naslov IP %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l298
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/49fbe6f19:/pulse.c#l324
@@ -8028,9 +8021,9 @@ msgstr "Obdelava naslova IPv6 ni uspela\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l303
 #: ../openconnect-strings.txt:4186
-#, fuzzy, c-format
+#, c-format
 msgid "Received internal IPv6 address %s\n"
-msgstr "S ponovno povezavo je pridobljen drugačen naslov IPv6 (%s != %s)\n"
+msgstr "Prejeti interni naslov IPv6 %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/49fbe6f19:/pulse.c#l358
 #: ../openconnect-strings.txt:4189
@@ -8070,9 +8063,9 @@ msgstr "Samo ESP: %d\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/35cce8ea8:/pulse.c#l503
 #: ../openconnect-strings.txt:4207
-#, fuzzy, c-format
+#, c-format
 msgid "Received internal gateway IPv6 address %s\n"
-msgstr "Prejeti notranji prehod IPv6 naslov %s\n"
+msgstr "Prejeti naslov IPv6 notranjega prehoda %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/486cfb839:/pulse.c#l506
 #: ../openconnect-strings.txt:4210
@@ -8290,10 +8283,8 @@ msgstr "Vnesite podatke o sekundarnem žetonu:"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l1025
 #: ../openconnect-strings.txt:4335
-#, fuzzy
 msgid "Error creating Pulse connection request\n"
-msgstr ""
-"Napaka zapisovanja zahtev povezave s posredniškim strežnikom SOCKS: %s\n"
+msgstr "Napaka pri ustvarjanju zahteve za povezavo Pulse\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l1066
 #: ../openconnect-strings.txt:4338
@@ -8313,12 +8304,11 @@ msgstr "Seja EAP-TTLS ni bilo možno vzpostaviti\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b02101eb6:/pulse.c#l1701
 #: ../openconnect-strings.txt:4347
-#, fuzzy
 msgid ""
 "WARNING: Server provided certificate MD5 does not match its actual "
 "certificate.\n"
 msgstr ""
-"OPOZORILO: Potrdilo MD5, ki ga je zagotovil strežnik, se ne ujema z "
+"OPOZORILO: Potrdilo MD5, ki ga je podal strežnik, se ne ujema z njegovim "
 "dejanskim potrdilom.\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/270eda80a:/pulse.c#l1489
@@ -8726,9 +8716,8 @@ msgstr "Pri izvedbi skript »%s« je vrnjena napaka %d\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/fe2f766b6:/ssl.c#l110
 #: ../openconnect-strings.txt:4562
-#, fuzzy
 msgid "Failed select() for socket connect"
-msgstr "Izbira ni uspela () za povezavo vtičnice"
+msgstr "Neuspeli select() za povezavo vtičnice"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/2412b1da5:/ssl.c#l999
 #: ../openconnect-strings.txt:4565
@@ -8737,21 +8726,19 @@ msgstr "Povezava z vtičem je spodletela\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/8388bc370:/ssl.c#l191
 #: ../openconnect-strings.txt:4568
-#, fuzzy
 msgid "Failed select() for socket accept"
-msgstr "Izbira ni uspela () za sprejem vtičnic"
+msgstr "Neuspeli select() za sprejem vtičnice"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/8388bc370:/ssl.c#l196
 #: ../openconnect-strings.txt:4571
-#, fuzzy
 msgid "Socket accept cancelled\n"
-msgstr "Vtičnica sprejme preklicano\n"
+msgstr "Sprejem vtičnice preklican\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/8388bc370:/ssl.c#l207
 #: ../openconnect-strings.txt:4574
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to accept local connection: %s\n"
-msgstr "Lokalne povezave ni bilo mogoče sprejeti: %s\n"
+msgstr "Krajevne povezave ni bilo mogoče sprejeti: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b69aa4e48:/ssl.c#l194
 #: ../openconnect-strings.txt:4577
@@ -9012,9 +8999,8 @@ msgstr "Vtičnica UDP naj ne blokira"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/613bca6f9:/ssl.c#l910
 #: ../openconnect-strings.txt:4714
-#, fuzzy
 msgid "Cookie is no longer valid, ending session\n"
-msgstr "Piškotek ni več veljaven, končna seja\n"
+msgstr "Piškotek ni več veljaven, seja je končana\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/613bca6f9:/ssl.c#l914
 #: ../openconnect-strings.txt:4717
@@ -9048,16 +9034,20 @@ msgstr "Pošiljanje žetona SSPI %lu bajtov\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l199
 #: ../openconnect-strings.txt:4732
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to send SSPI authentication token to proxy: %s\n"
-msgstr "Branje potrdila v pomnilnik je spodletelo: %s\n"
+msgstr ""
+"Pošiljanje žetona za preverjanje pristnosti SSPI posrednemu strežniku ni "
+"uspelo: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l207
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l228
 #: ../openconnect-strings.txt:4736
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to receive SSPI authentication token from proxy: %s\n"
-msgstr "Ponovna povezava z gostiteljem %s je spodletela.\n"
+msgstr ""
+"Ni bilo mogoče prejeti žetona za preverjanje pristnosti SSPI od posrednega "
+"strežnika: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l213
 #: ../openconnect-strings.txt:4739
@@ -9096,9 +9086,9 @@ msgstr "Rezultat EncryptMessage() je prevelik (%lu + %lu + %lu)\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l318
 #: ../openconnect-strings.txt:4757
-#, fuzzy, c-format
+#, c-format
 msgid "Sending SSPI protection negotiation of %u bytes\n"
-msgstr "Pošiljanje pogajanj o zaščiti SSPI za %u bajtov\n"
+msgstr "Pošiljanje pogajanj o zaščiti SSPI z %u bajti\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l323
 #: ../openconnect-strings.txt:4760
@@ -9109,9 +9099,9 @@ msgstr "Ponovna povezava z gostiteljem %s je spodletela.\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l331
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l341
 #: ../openconnect-strings.txt:4764
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to receive SSPI protection response from proxy: %s\n"
-msgstr "Ponovna povezava z gostiteljem %s je spodletela.\n"
+msgstr "Odgovor zaščite SSPI iz posrednega strežnika ni prejet: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l346
 #: ../openconnect-strings.txt:4767
@@ -9190,9 +9180,8 @@ msgstr "Generiranje kode žetona RSA\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/f359a42a9:/tun-win32.c#l102
 #: ../openconnect-strings.txt:4811
-#, fuzzy
 msgid "Cannot allocate memory for adapter info\n"
-msgstr "Ni mogoče dodeliti pomnilnika za informacije o kartici\n"
+msgstr "Ni mogoče dodeliti pomnilnika za informacije o vmesniku\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/f359a42a9:/tun-win32.c#l139
 #: ../openconnect-strings.txt:4814
@@ -9685,21 +9674,21 @@ msgstr ""
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l157
 #: ../openconnect-strings.txt:5063
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to open /dev/vhost-net: %s\n"
 msgstr "Ni bilo mogoče odpreti /dev/vhost-net: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l164
 #: ../openconnect-strings.txt:5066
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to set vhost ownership: %s\n"
-msgstr "Lastništva duha ni bilo mogoče nastaviti: %s\n"
+msgstr "Lastništva vhost ni bilo mogoče nastaviti: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l173
 #: ../openconnect-strings.txt:5069
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to get vhost features: %s\n"
-msgstr "Funkcij duhov ni bilo mogoče pridobiti: %s\n"
+msgstr "Funkcij vhost ni bilo mogoče pridobiti: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l178
 #: ../openconnect-strings.txt:5072
@@ -9970,27 +9959,27 @@ msgstr "Vzpostavljen kontekst PC/SC\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c24046b93:/yubikey.c#l155
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c24046b93:/yubikey.c#l165
 #: ../openconnect-strings.txt:5210
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to query reader list: %s\n"
-msgstr "Branje z vtiča SSL je spodletelo: %s\n"
+msgstr "Poizvedba po seznamu bralnika ni uspela: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c24046b93:/yubikey.c#l180
 #: ../openconnect-strings.txt:5213
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to connect to PC/SC reader '%s': %s\n"
-msgstr "Sprememba domače mape CSD '%s' je spodletela: %s\n"
+msgstr "Povezava z bralnikom PC/SC »%s« ni uspela: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/973eed1ff:/yubikey.c#l341
 #: ../openconnect-strings.txt:5216
-#, fuzzy, c-format
+#, c-format
 msgid "Connected PC/SC reader '%s'\n"
-msgstr "Vzpostavljena je povezava s HTTPS na %s\n"
+msgstr "Priključeni bralnik PC/SC »%s«\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/973eed1ff:/yubikey.c#l346
 #: ../openconnect-strings.txt:5219
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to obtain exclusive access to reader '%s': %s\n"
-msgstr "Razčlenjevanje preusmeritvenega naslova URL '%s' je spodletelo: %s\n"
+msgstr "Ni bilo mogoče pridobiti izključnega dostopa do bralnika »%s«: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c24046b93:/yubikey.c#l232
 #: ../openconnect-strings.txt:5222
@@ -10000,17 +9989,17 @@ msgstr "Ukaz »Tipke seznama«"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c24046b93:/yubikey.c#l262
 #: ../openconnect-strings.txt:5225
-#, fuzzy, c-format
+#, c-format
 msgid "Found %s/%s key '%s' on '%s'\n"
-msgstr "Najdeno %s/%s ključ '%s' na '%s'\n"
+msgstr "Najden ključ %s/%s »%s« na »%s«\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c24046b93:/yubikey.c#l279
 #: ../openconnect-strings.txt:5228
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Token '%s' not found on Yubikey '%s'. Searching for another Yubikey...\n"
 msgstr ""
-"Žetona '%s' ni bilo mogoče najti na Yubikeyju '%s'. Iskanje drugega "
+"Žetona »%s« ni bilo mogoče najti na Yubikeyju »%s«. Iskanje drugega "
 "Yubikeyja ...\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c24046b93:/yubikey.c#l319
