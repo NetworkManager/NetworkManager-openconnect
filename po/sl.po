@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "openconnect/issues\n"
 "POT-Creation-Date: 2025-01-19 15:45+0000\n"
-"PO-Revision-Date: 2025-01-25 23:15+0100\n"
+"PO-Revision-Date: 2025-01-26 10:31+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl_SI\n"
@@ -159,7 +159,7 @@ msgstr "Preverjanje pristnosti potrdila"
 
 #: ../properties/nm-openconnect-dialog.ui.h:11
 msgid "Use _FSID for key passphrase"
-msgstr "Uporabite _FSID za šifrirno geslo"
+msgstr "Uporabite _FSID za večbesedno geslo ključa"
 
 #: ../properties/nm-openconnect-dialog.ui.h:12
 msgid "Prevent user from manually accepting invalid certificates"
@@ -4271,9 +4271,8 @@ msgstr "Neznani paket. Izvoz glave sledi:\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/d61ae145e:/gpst.c#l1231
 #: ../openconnect-strings.txt:2148
-#, fuzzy
 msgid "GlobalProtect HIP check due\n"
-msgstr "Rok je za preverjanje GlobalProtect HIP\n"
+msgstr "Čas je že za preverjanje GlobalProtect HIP\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/d61ae145e:/gpst.c#l1244
 #: ../openconnect-strings.txt:2151
@@ -4282,9 +4281,8 @@ msgstr "Preverjanje ali poročilo HIP ni uspelo\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/8e7efd51f:/gpst.c#l750
 #: ../openconnect-strings.txt:2154
-#, fuzzy
 msgid "GlobalProtect rekey due\n"
-msgstr "Rok je za ponovno preverjanje ključa GlobalProtect\n"
+msgstr "Čas je že za ponovno preverjanje ključa GlobalProtect\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/8e7efd51f:/gpst.c#l755
 #: ../openconnect-strings.txt:2157
@@ -4445,15 +4443,14 @@ msgstr "Posredni strežnik SOCKS zahteva zaščito neznane vrste 0x%02x\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/d6780b960:/hpke.c#l58
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/d4fc4b084:/hpke.c#l86
 #: ../openconnect-strings.txt:2242
-#, fuzzy, c-format
+#, c-format
 msgid "Spawning external browser '%s'\n"
-msgstr "Drstenje zunanjega brskalnika '%s'\n"
+msgstr "Odpiranje zunanjega brskalnika »%s«\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/d6780b960:/hpke.c#l73
 #: ../openconnect-strings.txt:2245
-#, fuzzy
 msgid "Spawn browser"
-msgstr "Brskalnik drstenja"
+msgstr "Odpri brskalnik"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/d738b6f2c:/hpke.c#l83
 #: ../openconnect-strings.txt:2248
@@ -4463,9 +4460,9 @@ msgstr "Poslušanje na krajevnih vratih 29786 je spodletelo: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b474b2539:/hpke.c#l131
 #: ../openconnect-strings.txt:2251
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to spawn external browser for %s\n"
-msgstr "Zunanjega brskalnika ni bilo mogoče drstiti za %s\n"
+msgstr "Zunanjega brskalnika ni bilo mogoče odpreti za %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/d738b6f2c:/hpke.c#l124
 #: ../openconnect-strings.txt:2254
@@ -5269,7 +5266,7 @@ msgstr "Nastavi pot URL-ja začetne zahteve"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/638a35eb5:/main.c#l167
 #: ../openconnect-strings.txt:2698
 msgid "Set key passphrase or TPM SRK PIN"
-msgstr "Nastavi šifrirno frazo ali kodo PIN za TPM SRK"
+msgstr "Nastavi večbesedno geslo ali kodo PIN za TPM SRK"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b474b2539:/main.c#l963
 #: ../openconnect-strings.txt:2701
@@ -5279,7 +5276,7 @@ msgstr "Nastavite izvršljivo datoteko zunanjega brskalnika"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/638a35eb5:/main.c#l168
 #: ../openconnect-strings.txt:2704
 msgid "Key passphrase is fsid of file system"
-msgstr "Šifrirno geslo ključa je fsid datotečnega sistema"
+msgstr "Večbesedno geslo ključa je fsid datotečnega sistema"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/aa8d434da:/main.c#l815
 #: ../openconnect-strings.txt:2707
@@ -5652,7 +5649,7 @@ msgstr "Uporabi ključ MCA MCAKEY"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a24fef5d5:/main.c#l976
 #: ../openconnect-strings.txt:2923
 msgid "Passphrase MCAPASS for MCACERT/MCAKEY"
-msgstr "Šifrirno geslo MCAPASS za MCACERT/MCAKEY"
+msgstr "Večbesedno šifrirno geslo MCAPASS za MCACERT/MCAKEY"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/9b66010c4:/main.c#l684
 #: ../openconnect-strings.txt:2926
@@ -6312,13 +6309,13 @@ msgstr "Po odstranitvi glav %s/IPv%d, MTU %d\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/2b90f3335:/mtucalc.c#l115
 #: ../openconnect-strings.txt:3278
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "After removing protocol specific overhead (%d unpadded, %d padded, %d "
 "blocksize), MTU of %d\n"
 msgstr ""
-"Po odstranitvi režijskih stroškov, specifičnih za protokol (%d "
-"neoblazinjeni, %d oblazinjeni, %d velikosti bloka), MTU %d\n"
+"Po odstranitvi presežkov, specifičnih za protokol (%d neoblazinjeni, %d "
+"oblazinjeni, %d velikosti bloka), MTU %d\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/800692918:/ntlm.c#l81
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b015dc4ae:/sspi.c#l99
@@ -6472,14 +6469,14 @@ msgstr "Prejeti naslov notranjega prehoda %s\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/ee445d90b:/oncp.c#l749
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l1670
 #: ../openconnect-strings.txt:3370
-#, fuzzy, c-format
+#, c-format
 msgid "Received split include route %s\n"
-msgstr "Prejeta razdelitev vključuje %s poti\n"
+msgstr "Prejeta razdelitev vključuje pot %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/7808034ea:/oncp.c#l266
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l1683
 #: ../openconnect-strings.txt:3374
-#, fuzzy, c-format
+#, c-format
 msgid "Received split exclude route %s\n"
 msgstr "Prejeta razdelitev izključuje pot %s\n"
 
@@ -6532,9 +6529,9 @@ msgstr "Življenjska doba ključa ESP: %u s\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4971447f6:/oncp.c#l825
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l425
 #: ../openconnect-strings.txt:3403
-#, fuzzy, c-format
+#, c-format
 msgid "ESP to SSL fallback: %u seconds\n"
-msgstr "Rezervna možnost ESP v SSL: %u sekunde\n"
+msgstr "Nadomestna povrnitev ESP v SSL: %u s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/87f78b4d9:/oncp.c#l606
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l409
@@ -7075,15 +7072,13 @@ msgstr "Uporaba sekundarnega ključa PKCS#11 %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/0a23a8835:/openssl-pkcs11.c#l656
 #: ../openconnect-strings.txt:3707
-#, fuzzy
 msgid "Failed to instantiate private key from PKCS#11\n"
-msgstr "Uporaba zasebnega ključa iz shrambe ključev je spodletelo\n"
+msgstr "Vzpostavitev zasebnega ključa iz PKCS#11 je spodletela\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/0a23a8835:/openssl-pkcs11.c#l657
 #: ../openconnect-strings.txt:3710
-#, fuzzy
 msgid "Failed to instantiate secondary private key from PKCS#11\n"
-msgstr "Nalaganje osebnega ključa kot PKCS#8 je spodletelo: %s\n"
+msgstr "Vzpostavitev drugotnega osebnega ključa iz PKCS#11 je spodletela\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/77a91693f:/openssl-pkcs11.c#l593
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/77a91693f:/openssl-pkcs11.c#l599
@@ -7254,7 +7249,9 @@ msgstr "Ustvarjanje pravil BIO za predmet shrambe ključa »%s«\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/0a23a8835:/openssl.c#l904
 #: ../openconnect-strings.txt:3807
 msgid "Loading private key failed (wrong passphrase?)\n"
-msgstr "Nalaganje zasebnega ključa je spodletelo (napačno šifrirno geslo?)\n"
+msgstr ""
+"Nalaganje zasebnega ključa je spodletelo (napačno večbesedno, šifrirno "
+"geslo?)\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/0a23a8835:/openssl.c#l905
 #: ../openconnect-strings.txt:3810
@@ -7724,9 +7721,9 @@ msgstr "Strežnik je zavrnil/nak-nil možnost LCP ACCOMP\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/71bf1d939:/ppp.c#l703
 #: ../openconnect-strings.txt:4063
-#, fuzzy, c-format
+#, c-format
 msgid "Server nak-offered IPv4 address: %s\n"
-msgstr "Goli ponujeni naslov IPv4 strežnika: %s\n"
+msgstr "Naslov IPv4, ki ga strežnik nak/ponuja: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/285e86157:/ppp.c#l685
 #: ../openconnect-strings.txt:4066
@@ -7736,39 +7733,38 @@ msgstr "Strežnik je zavrnil zastareli naslov IP %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/71bf1d939:/ppp.c#l713
 #: ../openconnect-strings.txt:4069
-#, fuzzy, c-format
+#, c-format
 msgid "Server rejected/nak'ed our IPv4 address or request: %s\n"
-msgstr "Strežnik je zavrnil/nak'ed naš IPv4 naslov ali zahtevo: %s\n"
+msgstr "Strežnik je zavrnil/nak-nil naš IPv4 naslov ali zahtevo: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l656
 #: ../openconnect-strings.txt:4072
-#, fuzzy, c-format
+#, c-format
 msgid "Server nak-offered IPCP request for %s[%d] server: %s\n"
-msgstr "Server nak ponujena zahteva IPCP za strežnik %s[%d]: %s\n"
+msgstr "Zahteva IPCP, ki jo ponuja/nak strežnik, za strežnik %s[%d]: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l665
 #: ../openconnect-strings.txt:4075
-#, fuzzy, c-format
+#, c-format
 msgid "Server rejected/nak'ed IPCP request for %s[%d] server\n"
-msgstr "Strežnik zavrnjen/nak'ed IPCP zahteva za %s[%d] strežnik\n"
+msgstr "Strežnik zavrnil/nak-nil zahtevo IPCP za strežnik %s[%d]\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/71bf1d939:/ppp.c#l750
 #: ../openconnect-strings.txt:4078
-#, fuzzy, c-format
+#, c-format
 msgid "Server nak-offered IPv6 link-local address %s\n"
-msgstr "Strežnik nak ponujen IPv6 link-lokalni naslov %s\n"
+msgstr "Strežnik nak/ponudi naslov IPv6 link-local %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l698
 #: ../openconnect-strings.txt:4081
-#, fuzzy
 msgid "Server rejected/nak'ed our IPv6 interface identifier\n"
-msgstr "Strežnik je zavrnil/nak'ed naš identifikator vmesnika IPv6\n"
+msgstr "Strežnik je zavrnil/nak-nil identifikator našega vmesnika IPv6\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/a47406b43:/ppp.c#l705
 #: ../openconnect-strings.txt:4084
-#, fuzzy, c-format
+#, c-format
 msgid "Server rejected/nak'ed %s TLV (tag %d, len %d+2)\n"
-msgstr "Strežnik zavrnjen/nak'ed %s TLV (oznaka %d, len %d+2)\n"
+msgstr "Strežnik zavrnil/nak-nil %s TLV (oznaka %d, dolž %d+2)\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/20f0c2ab4:/ppp.c#l721
 #: ../openconnect-strings.txt:4087
@@ -8008,15 +8004,17 @@ msgstr "Prejeti naslov IPv6 notranjega prehoda %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/486cfb839:/pulse.c#l506
 #: ../openconnect-strings.txt:4210
-#, fuzzy, c-format
+#, c-format
 msgid "Received proxy auto-config (PAC) payload of size %d\n"
-msgstr "Prejeta koristna obremenitev proxy auto-config (PAC) velikosti %d\n"
+msgstr ""
+"Prejeto obremenitev samodejne konfiguracije posrednega strežnika (PAC) "
+"velikosti %d\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/486cfb839:/pulse.c#l511
 #: ../openconnect-strings.txt:4213
-#, fuzzy, c-format
+#, c-format
 msgid "Received proxy auto-config (PAC) URL: %.*s\n"
-msgstr "URL prejete samodejne konfiguracije proxyja (PAC): %.*s\n"
+msgstr "Prejet URL samodejne konfiguracije posrednega strežnika (PAC): %.*s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/7bbbc9cd0:/pulse.c#l515
 #: ../openconnect-strings.txt:4216
@@ -8210,7 +8208,6 @@ msgstr "Prosimo, vnesite odgovor:"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/45cbcd27c:/pulse.c#l1133
 #: ../openconnect-strings.txt:4329
-#, fuzzy
 msgid "Please enter your passcode:"
 msgstr "Vnesite svoje geslo:"
 
@@ -8384,9 +8381,8 @@ msgstr "Nepričakovan odziv namesto uspeha overitve IF-T/TLS:\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/9c45fd072:/pulse.c#l2007
 #: ../openconnect-strings.txt:4422
-#, fuzzy
 msgid "EAP-TTLS failure: Flushing output with pending input bytes\n"
-msgstr "Okvara EAP-TTLS: izpiranje izhoda s čakajočimi vhodnimi bajti\n"
+msgstr "Napaka EAP-TTLS: Izpiranje izhoda s čakajočimi vhodnimi bajti\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/9c45fd072:/pulse.c#l2030
 #: ../openconnect-strings.txt:4425
@@ -8580,21 +8576,21 @@ msgstr "Opusti slabo deljenje z izključevanjem: »%s«\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/e49e49e33:/script.c#l161
 #: ../openconnect-strings.txt:4529
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "WARNING: Split include \"%s\" has host bits set, replacing with \"%s/%d\".\n"
 msgstr ""
-"OPOZORILO: Split vključuje \"%s\" ima nastavljene gostiteljske bite, ki se "
-"nadomestijo z \"%s/%d\".\n"
+"OPOZORILO: Vključitev delitve »%s« ima nastavljene gostiteljske bite, ki se "
+"nadomestijo z »%s/%d«.\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/e49e49e33:/script.c#l165
 #: ../openconnect-strings.txt:4533
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "WARNING: Split exclude \"%s\" has host bits set, replacing with \"%s/%d\".\n"
 msgstr ""
-"OPOZORILO: Razdeljena izključitev »%s« ima nastavljene bitove gostitelja, ki "
-"se nadomestijo z »%s/%d«.\n"
+"OPOZORILO: izključitev delitve »%s« ima nastavljene bite gostitelja, ki se "
+"nadomestijo z »%s/%d«.\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/e49e49e33:/script.c#l272
 #: ../openconnect-strings.txt:4537
@@ -8731,9 +8727,8 @@ msgstr "Povezava z %s%s%s:%s je spodletela: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/2f55fec32:/ssl.c#l327
 #: ../openconnect-strings.txt:4608
-#, fuzzy
 msgid "Forgetting non-functional previous peer address\n"
-msgstr "Pozabljanje na nefunkcionalen prejšnji naslov vrstnikov\n"
+msgstr "Pozabljanje nefunkcionalnega prejšnjega naslova vrstnikov\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/eef00ae2f:/ssl.c#l1016
 #: ../openconnect-strings.txt:4611
@@ -8755,9 +8750,9 @@ msgstr "statvfs: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/e57699e1d:/ssl.c#l404
 #: ../openconnect-strings.txt:4620
-#, fuzzy
 msgid "Could not obtain file system ID for passphrase\n"
-msgstr "ID-ja datotečnega sistema za geslo ni bilo mogoče pridobiti\n"
+msgstr ""
+"ID-ja datotečnega sistema za večbesedno geslo ni bilo mogoče pridobiti\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/45f8f22de:/ssl.c#l419
 #: ../openconnect-strings.txt:4623
@@ -8828,9 +8823,8 @@ msgstr "Neznana napaka"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/e1a3be3da:/ssl.c#l885
 #: ../openconnect-strings.txt:4662
-#, fuzzy
 msgid "Got cancel on legacy fd\n"
-msgstr "Imam preklic za podedovano fd\n"
+msgstr "Prejet preklic za opuščeni fd\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/e1a3be3da:/ssl.c#l900
 #: ../openconnect-strings.txt:4665
@@ -9016,9 +9010,9 @@ msgstr "Pošiljanje pogajanj o zaščiti SSPI z %u bajti\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l323
 #: ../openconnect-strings.txt:4760
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to send SSPI protection response to proxy: %s\n"
-msgstr "Ponovna povezava z gostiteljem %s je spodletela.\n"
+msgstr "Odgovor zaščite SSPI posrednemu strežniku ni uspel: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l331
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l341
@@ -9029,9 +9023,9 @@ msgstr "Odgovor zaščite SSPI iz posrednega strežnika ni prejet: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l346
 #: ../openconnect-strings.txt:4767
-#, fuzzy, c-format
+#, c-format
 msgid "Got SSPI protection response of %d bytes: %02x %02x %02x %02x\n"
-msgstr "Imam odziv zaščite SSPI %d bajtov: %02x %02x %02x %02x\n"
+msgstr "Prejet odziv zaščite SSPI %d bajtov: %02x %02x %02x %02x\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4dd05b4f2:/sspi.c#l362
 #: ../openconnect-strings.txt:4770
@@ -9189,12 +9183,11 @@ msgstr "Ključa registra %s\\%s ni mogoče prebrati: %s (%ld)\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/f359a42a9:/tun-win32.c#l349
 #: ../openconnect-strings.txt:4854
-#, fuzzy
 msgid ""
 "Access denied creating Wintun adapter. Are you running with Administrator "
 "privileges?\n"
 msgstr ""
-"Access je zavrnil ustvarjanje vmesnika Wintun. Ali uporabljate skrbniške "
+"Zavrnjen dostop za ustvarjanje vmesnika Wintun. Ali uporabljate skrbniške "
 "pravice?\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/6096fb0e4:/tun-win32.c#l186
@@ -9302,14 +9295,14 @@ msgstr "Uporaba %s naprave »%s«, kazalo %d\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b5ff6f3fb:/tun-win32.c#l473
 #: ../openconnect-strings.txt:4910
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "WARNING: Support for Wintun is experimental and may be unstable. If you\n"
 "  encounter problems, install the TAP-Windows driver instead. See\n"
 "  %s\n"
 msgstr ""
 "OPOZORILO: Podpora za Wintun je poskusna in je lahko nestabilna. Če\n"
-"  Naletite na težave, namesto tega namestite gonilnik TAP-Windows. Videti\n"
+"  naletite na težave, namesto tega namestite gonilnik TAP-Windows. Glejte\n"
 "  %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/15e3bd03f:/tun-win32.c#l756
@@ -9376,9 +9369,8 @@ msgstr "Pisanje v napravo TAP je spodletelo: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/cb1a342a4:/tun-win32.c#l285
 #: ../openconnect-strings.txt:4948
-#, fuzzy
 msgid "Spawning tunnel scripts is not yet supported on Windows\n"
-msgstr "Skripte za drstitveni tunel še niso podprte v sistemu Windows\n"
+msgstr "Skripti za razpiranje tunelov v sistemu Windows še niso podprti\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/f8fbc0b30:/tun.c#l121
 #: ../openconnect-strings.txt:4951
@@ -9473,9 +9465,9 @@ msgstr "Vtičnice SYSPROTO_CONTROL ni bilo mogoče odpreti: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/898246b25:/tun.c#l312
 #: ../openconnect-strings.txt:4999
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to query utun control id: %s\n"
-msgstr "Zapisovanje nastavitev v %s je spodletelo: %s\n"
+msgstr "Poizvedba o ID-ju utun ni uspela: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/5b9c521a9:/tun.c#l343
 #: ../openconnect-strings.txt:5002
@@ -9507,15 +9499,15 @@ msgstr "TUNSIFHEAD"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/9b6885730:/tun.c#l464
 #: ../openconnect-strings.txt:5017
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to make tun socket nonblocking: %s\n"
-msgstr "Pisanje v vtič SSL je spodletelo: %s\n"
+msgstr "Vtičnice tun ni bilo možno narediti ne blokirane: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/0f484d6c7:/tun.c#l664
 #: ../openconnect-strings.txt:5020
-#, fuzzy, c-format
+#, c-format
 msgid "socketpair failed: %s\n"
-msgstr "Pošiljanje SSL je spodletelo: %s\n"
+msgstr "Socketpair ni uspel: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/0f484d6c7:/tun.c#l669
 #: ../openconnect-strings.txt:5023
@@ -9553,47 +9545,44 @@ msgstr "Velikosti vring #%d ni bilo mogoče nastaviti: %s\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l85
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l97
 #: ../openconnect-strings.txt:5042
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to set vring #%d base: %s\n"
 msgstr "Osnove vring #%d ni bilo mogoče nastaviti: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l107
 #: ../openconnect-strings.txt:5045
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to set vring #%d RX backend: %s\n"
-msgstr "Zaledje vring #%d RX ni bilo mogoče nastaviti: %s\n"
+msgstr "Zaledje RX vring #%d ni bilo mogoče nastaviti: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l115
 #: ../openconnect-strings.txt:5048
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to set vring #%d call eventfd: %s\n"
-msgstr "Ni uspelo nastaviti vring #%d klic eventfd: %s\n"
+msgstr "Ni uspelo nastaviti vring #%d klica eventfd: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l124
 #: ../openconnect-strings.txt:5051
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to set vring #%d kick eventfd: %s\n"
-msgstr "Ni uspelo nastaviti vring #%d kick eventfd: %s\n"
+msgstr "Ni uspelo nastaviti vring #%d brce eventfd: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/7b059e931:/vhost.c#l183
 #: ../openconnect-strings.txt:5054
-#, fuzzy
 msgid "Failed to find virtual task size; search reached zero"
-msgstr ""
-"Velikosti navidezne naloge ni bilo mogoče najti; Iskanje je doseglo nič"
+msgstr "Velikosti navidezne naloge ni bilo mogoče najti; dosežena vrednost nič"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/7b059e931:/vhost.c#l233
 #: ../openconnect-strings.txt:5057
-#, fuzzy, c-format
+#, c-format
 msgid "Detected virtual address range 0x%lx-0x%lx\n"
 msgstr "Zaznan obseg navideznih naslovov 0x%lx-0x%lx\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l143
 #: ../openconnect-strings.txt:5060
-#, fuzzy, c-format
+#, c-format
 msgid "Not using vhost-net due to low queue length %d\n"
-msgstr ""
-"Ne uporabljate omrežja vhost-net zaradi nizke dolžine čakalne vrste %d\n"
+msgstr "vhost-net ni v uporabi zaradi kratke dolžine čakalne vrste %d\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l157
 #: ../openconnect-strings.txt:5063
@@ -9627,21 +9616,21 @@ msgstr "Funkcij vhost ni bilo mogoče nastaviti: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l194
 #: ../openconnect-strings.txt:5078
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to open vhost kick eventfd: %s\n"
-msgstr "Dogodka vhost kick ni bilo mogoče odpreti: %s\n"
+msgstr "Ni bilo mogoče odpreti brce vhosta eventfd: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l201
 #: ../openconnect-strings.txt:5081
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to open vhost call eventfd: %s\n"
-msgstr "Ni bilo mogoče odpreti dogodka klica vhost: %s\n"
+msgstr "Ni bilo mogoče odpreti klica vhosta eventfd: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l219
 #: ../openconnect-strings.txt:5084
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to set vhost memory map: %s\n"
-msgstr "Zemljevida pomnilnika duhov ni bilo mogoče nastaviti: %s\n"
+msgstr "Zemljevida pomnilnika vhost ni bilo mogoče nastaviti: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l242
 #: ../openconnect-strings.txt:5087
@@ -9651,9 +9640,9 @@ msgstr "Nastavitev tun sndbuf ni uspela: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l247
 #: ../openconnect-strings.txt:5090
-#, fuzzy, c-format
+#, c-format
 msgid "Using vhost-net for tun acceleration, ring size %d\n"
-msgstr "Uporaba vhost-net za pospeševanje tun, velikost zvonjenja %d\n"
+msgstr "Uporaba vhost-net za pospeševanje tun, velikost zbirke %d\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l332
 #: ../openconnect-strings.txt:5093
@@ -9681,15 +9670,15 @@ msgstr "Paket RX %p(%d) [%d] [uporabljeno %d]\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l413
 #: ../openconnect-strings.txt:5105
-#, fuzzy, c-format
+#, c-format
 msgid "Queue TX packet %p at desc %d avail %d\n"
-msgstr "Queue TX paket %p na desc %d izkoristite %d\n"
+msgstr "Paket TX %p v vrsti na opisu %d na voljo %d\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l421
 #: ../openconnect-strings.txt:5108
-#, fuzzy, c-format
+#, c-format
 msgid "Queue RX packet %p at desc %d avail %d\n"
-msgstr "Paket vrste RX %p na opisu %d na voljo %d\n"
+msgstr "Paket RX %p v vrsti na opisu %d na voljo %d\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l456
 #: ../openconnect-strings.txt:5111
@@ -9699,13 +9688,11 @@ msgstr "Takojšnja budnost, ker se je obroč vhost premaknil z 0x%x na 0x%x\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/fd8cfdfd3:/vhost.c#l536
 #: ../openconnect-strings.txt:5114
-#, fuzzy
 msgid "Failed to kick vhost-net eventfd\n"
 msgstr "Ni bilo mogoče brcniti vhost-net eventfd\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/c6ef11969:/vhost.c#l482
 #: ../openconnect-strings.txt:5117
-#, fuzzy
 msgid "Kick vhost ring\n"
 msgstr "Brcni obroč vhost\n"
 
