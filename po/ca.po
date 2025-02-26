@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: network-manager-openconnect\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-28 22:08+0100\n"
-"PO-Revision-Date: 2020-09-08 13:07+0200\n"
+"PO-Revision-Date: 2025-02-26 13:07+0200\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -414,7 +414,7 @@ msgstr "El detector de parells morts DTLS ha detectat un parell mort!\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/3186bb699e:/dtls.c#l380
 #: ../openconnect-strings.txt:191
 msgid "Send DTLS DPD\n"
-msgstr "Envia DPD DTLS\n"
+msgstr "Envia DTLS DPD\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/3186bb699e:/array.c#l1238
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/3186bb699e:/dtls.c#l385
@@ -1314,7 +1314,7 @@ msgstr "Reconnexió errònia\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/3186bb699e:/pulse.c#l2901
 #: ../openconnect-strings.txt:695
 msgid "Send CSTP DPD\n"
-msgstr "Envia DPD CSTP\n"
+msgstr "Envia CSTP DPD\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/3186bb699e:/cstp.c#l1183
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/3186bb699e:/oncp.c#l1167
@@ -5533,7 +5533,7 @@ msgstr "Versió d'OpenConnect %s\n"
 #: ../openconnect-strings.txt:2982
 #, c-format
 msgid "Invalid software token mode \"%s\"\n"
-msgstr "Mode de testimoni de programari «%s»  no vàlid\n"
+msgstr "Mode de testimoni de programari «%s» no vàlid\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/3186bb699e:/main.c#l2148
 #: ../openconnect-strings.txt:2985
@@ -5610,7 +5610,7 @@ msgstr "Consulteu %s\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/3186bb699e:/main.c#l2381
 #: ../openconnect-strings.txt:3024
 msgid "User requested reconnect\n"
-msgstr "Torna a connectar la sol·licitud de l'usuari\n"
+msgstr "L'usuari ha sol·licitat tornar a connectar\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/3186bb699e:/main.c#l2392
 #: ../openconnect-strings.txt:3027
@@ -6539,7 +6539,7 @@ msgstr "PIN caducat\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/3186bb699e:/openssl-pkcs11.c#l287
 #: ../openconnect-strings.txt:3540
 msgid "Another user already logged in\n"
-msgstr "Un altre usuari està realment connectat\n"
+msgstr "Un altre usuari ja ha iniciat la sessió\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/3186bb699e:/openssl-pkcs11.c#l291
 #: ../openconnect-strings.txt:3543
