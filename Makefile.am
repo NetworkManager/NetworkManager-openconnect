@@ -291,7 +291,7 @@ nm-openconnect-service.name: $(srcdir)/nm-openconnect-service.name.in
 	    $< >$@
 
 DISTCHECK_CONFIGURE_FLAGS = \
-	--enable-more-warnings=yes \
+	--enable-more-warnings=error \
 	--with-gtk4
 
 CLEANFILES +=				\
