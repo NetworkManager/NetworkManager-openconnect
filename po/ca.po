@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "openconnect/issues\n"
 "POT-Creation-Date: 2025-05-10 21:23+0000\n"
-"PO-Revision-Date: 2025-05-23 21:50+0200\n"
+"PO-Revision-Date: 2025-08-14 21:50+0200\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -43,7 +43,7 @@ msgstr ""
 
 #: ../appdata/network-manager-openconnect.metainfo.xml.in.h:4
 msgid "Compatible with Cisco AnyConnect, Juniper and ocserv based networks."
-msgstr "Compatible amb xarxes basades en Cisco AnyConnect, Juniper o ocserv."
+msgstr "Compatible amb xarxes basades en Cisco AnyConnect, Juniper i ocserv."
 
 #: ../appdata/network-manager-openconnect.metainfo.xml.in.h:5
 msgid "The NetworkManager Developers"
@@ -168,10 +168,8 @@ msgid "Prevent user from manually accepting invalid certificates"
 msgstr "Impedeix als usuaris acceptar de forma manual certificats no vàlids"
 
 #: ../properties/nm-openconnect-dialog.ui.h:13
-#, fuzzy
-#| msgid "Disable DTLS and ESP"
 msgid "Disable UDP (DTLS and ESP)"
-msgstr "Inhabilita DTLS i ESP"
+msgstr "Inhabilita UDP (DTLS i ESP)"
 
 #: ../properties/nm-openconnect-dialog.ui.h:14
 msgid ""
@@ -204,11 +202,11 @@ msgstr "Inhabilitat"
 
 #: ../properties/nm-openconnect-dialog.ui.h:23
 msgid "RSA SecurID — read from ~/.stokenrc"
-msgstr "Identificador segur RSA - llegit des de ~/.stokenrc"
+msgstr "RSA SecurID - llegit des de ~/.stokenrc"
 
 #: ../properties/nm-openconnect-dialog.ui.h:24
 msgid "RSA SecurID — manually entered"
-msgstr "Identificador segur RSA - entrat manualment"
+msgstr "RSA SecurID - introduït manualment"
 
 #: ../properties/nm-openconnect-dialog.ui.h:25
 msgid "TOTP — manually entered"
@@ -375,10 +373,8 @@ msgid "No VPN secrets!"
 msgstr "Sense secrets VPN!"
 
 #: ../src/nm-openconnect-service.c:281
-#, fuzzy
-#| msgid "Could not open /dev/tun for plumbing"
 msgid "Could not open /dev/net/tun"
-msgstr "No es pot obrir /dev/tun per a fer canonades"
+msgstr "No es pot obrir /dev/net/tun"
 
 #: ../src/nm-openconnect-service.c:295
 #, fuzzy, c-format
@@ -388,7 +384,7 @@ msgstr "No s'ha pogut construir el nom de la interfície"
 #: ../src/nm-openconnect-service.c:311
 msgid "Could not create tunnel interface named 'vpnX', for X in 0..255"
 msgstr ""
-"No s'ha pogut crear una interfície de túnel anomenada «vnpX» on X al rang "
+"No s'ha pogut crear una interfície de túnel anomenada «vpnX» on X al rang "
 "0...255"
 
 #: ../src/nm-openconnect-service.c:321
@@ -2562,7 +2558,7 @@ msgstr "L'encaixada DTLS ha expirat\n"
 #: ../openconnect-strings.txt:1182
 #, c-format
 msgid "DTLS handshake failed: %s\n"
-msgstr "Error d'encaixat DTLS: %s\n"
+msgstr "Error d'encaixada DTLS: %s\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/595e35262:/gnutls-dtls.c#l252
 #: ../openconnect-strings.txt:1185
@@ -8236,10 +8232,8 @@ msgstr "Trieu el domini d'usuari Pulse:"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/33a746590:/pulse.c#l797
 #: ../openconnect-strings.txt:4261
-#, fuzzy
-#| msgid "Session:"
 msgid "Region:"
-msgstr "Sessió:"
+msgstr "Regió:"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l743
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b795ff352:/pulse.c#l1235
