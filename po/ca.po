@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/NetworkManager-"
 "openconnect/issues\n"
 "POT-Creation-Date: 2025-05-10 21:23+0000\n"
-"PO-Revision-Date: 2025-08-14 21:50+0200\n"
+"PO-Revision-Date: 2025-08-26 21:50+0200\n"
 "Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
 "com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -5410,7 +5410,7 @@ msgstr "Inhabilita per defecte els certificats d'autoritats del sistema"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/f8da07270:/main.c#l810
 #: ../openconnect-strings.txt:2728
 msgid "Cert file for server verification"
-msgstr "Fitxer CERT per la verificació del servidor"
+msgstr "Fitxer CERT per a la verificació del servidor"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/ffd55f342:/main.c#l817
 #: ../openconnect-strings.txt:2731
@@ -5472,7 +5472,7 @@ msgstr "Copia el camp TOS / TCLASS als paquets DTLS i ESP"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/f073e5b2b:/main.c#l828
 #: ../openconnect-strings.txt:2764
 msgid "Set local port for DTLS and ESP datagrams"
-msgstr "Configura el port per als datagrames DTLS i ESP"
+msgstr "Configura el port local per als datagrames DTLS i ESP"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/ffd55f342:/main.c#l830
 #: ../openconnect-strings.txt:2767
@@ -5512,12 +5512,12 @@ msgstr "Control de procés"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/f8da07270:/main.c#l828
 #: ../openconnect-strings.txt:2788
 msgid "Continue in background after startup"
-msgstr "Continua al fons després de l'inici"
+msgstr "Continua en segon pla després de l'inici"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/f8da07270:/main.c#l829
 #: ../openconnect-strings.txt:2791
 msgid "Write the daemon's PID to this file"
-msgstr "Escriu els PID dels dimonis per aquest fitxer"
+msgstr "Escriu el PID del dimoni per aquest fitxer"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/f8da07270:/main.c#l830
 #: ../openconnect-strings.txt:2794
@@ -5599,7 +5599,7 @@ msgstr "Fitxer de configuració XML"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/f8da07270:/main.c#l847
 #: ../openconnect-strings.txt:2839
 msgid "Request MTU from server (legacy servers only)"
-msgstr "Demana del MTU al servidor (sols servidors antics)"
+msgstr "Demana la MTU al servidor (sols servidors antics)"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/f8da07270:/main.c#l848
 #: ../openconnect-strings.txt:2842
@@ -6280,7 +6280,7 @@ msgstr "No es pot obrir el fitxer ~/.stokenrc\n"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/4bd422228:/main.c#l1270
 #: ../openconnect-strings.txt:3212
 msgid "OpenConnect was not built with libstoken support\n"
-msgstr "OpenConnect ha sigut muntat sense suport per libstoken\n"
+msgstr "OpenConnect no s'ha construït amb el suport de «libtoken»\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/f5e5623d9:/main.c#l1240
 #: ../openconnect-strings.txt:3215
@@ -6965,7 +6965,7 @@ msgstr ""
 #: ../openconnect-strings.txt:3594
 #, c-format
 msgid "Established DTLS connection (using OpenSSL). Ciphersuite %s-%s.\n"
-msgstr "Connexió DTLS establerta (utilitza OpenSSL). Ciphersuite %s-%s.\n"
+msgstr "Connexió DTLS establerta (utilitzant OpenSSL). Ciphersuite %s-%s.\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/b056e27c9:/openssl-dtls.c#l714
 #: ../openconnect-strings.txt:3597
@@ -8950,7 +8950,7 @@ msgstr "Acció no definida"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/ed16cfcf0:/ssl.c#l465
 #: ../openconnect-strings.txt:4656
 msgid "Wrong password"
-msgstr "Contrasenya dolenta"
+msgstr "Contrasenya incorrecta"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/dd9b0ab34:/ssl.c#l428
 #: ../openconnect-strings.txt:4659
@@ -9061,7 +9061,7 @@ msgstr "Fa que el sòcol UDP no es bloquegi"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/613bca6f9:/ssl.c#l910
 #: ../openconnect-strings.txt:4714
 msgid "Cookie is no longer valid, ending session\n"
-msgstr "La galeta no és ja vàlida, s'està acabant la sessió\n"
+msgstr "La galeta ja no és vàlida, s'està acabant la sessió\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/613bca6f9:/ssl.c#l914
 #: ../openconnect-strings.txt:4717
@@ -9238,7 +9238,7 @@ msgstr "PIN:"
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/465198ce3:/stoken.c#l216
 #: ../openconnect-strings.txt:4805
 msgid "Invalid PIN format; try again.\n"
-msgstr "Format de PIN no vàlid; torneu a intentar.\n"
+msgstr "Format de PIN no vàlid; torneu-ho a intentar.\n"
 
 #. https://git.infradead.org/users/dwmw2/openconnect.git/blob/465198ce3:/stoken.c#l299
 #: ../openconnect-strings.txt:4808
