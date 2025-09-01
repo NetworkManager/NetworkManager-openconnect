@@ -33,17 +33,6 @@
 
 #include <openconnect.h>
 
-#ifndef OPENCONNECT_CHECK_VER
-#define OPENCONNECT_CHECK_VER(x,y) 0
-#endif
-
-#if !OPENCONNECT_CHECK_VER(2,1)
-#define openconnect_has_stoken_support() 0
-#endif
-#if !OPENCONNECT_CHECK_VER(2,2)
-#define openconnect_has_oath_support() 0
-#endif
-
 #ifdef NM_VPN_OLD
 # include "nm-openconnect-editor.h"
 #else
@@ -53,16 +42,8 @@
 # include "nm-utils/nm-vpn-plugin-utils.h"
 #endif
 
-#if OPENCONNECT_CHECK_VER(5,5)
 # define OPENCONNECT_PLUGIN_NAME    _("Multi-protocol VPN client (openconnect)")
 # define OPENCONNECT_PLUGIN_DESC    _("Compatible with Cisco AnyConnect, Juniper Network Connect and Junos Pulse, and PAN GlobalProtect SSL VPNs.")
-#elif OPENCONNECT_CHECK_VER(5,2)
-# define OPENCONNECT_PLUGIN_NAME    _("Multi-protocol VPN client (openconnect)")
-# define OPENCONNECT_PLUGIN_DESC    _("Compatible with Cisco AnyConnect and Juniper Network Connect and Junos Pulse SSL VPNs.")
-#else
-# define OPENCONNECT_PLUGIN_NAME    _("Cisco AnyConnect Compatible VPN (openconnect)")
-# define OPENCONNECT_PLUGIN_DESC    _("Compatible with Cisco AnyConnect SSL VPN.")
-#endif
 
 /************** plugin class **************/
 
@@ -78,57 +59,6 @@ static void openconnect_editor_plugin_interface_init (NMVpnEditorPluginInterface
 G_DEFINE_TYPE_EXTENDED (OpenconnectEditorPlugin, openconnect_editor_plugin, G_TYPE_OBJECT, 0,
                         G_IMPLEMENT_INTERFACE (NM_TYPE_VPN_EDITOR_PLUGIN,
                                                openconnect_editor_plugin_interface_init))
-
-#if !OPENCONNECT_CHECK_VER(5,5)
-#define OC_PROTO_PROXY  (1<<0)
-#define OC_PROTO_CSD    (1<<1)
-#define OC_PROTO_AUTH_CERT      (1<<2)
-#define OC_PROTO_AUTH_OTP       (1<<3)
-#define OC_PROTO_AUTH_STOKEN    (1<<4)
-
-struct oc_vpn_proto {
-        const char *name;
-        const char *pretty_name;
-        const char *description;
-        unsigned int flags;
-};
-
-static int openconnect_get_supported_protocols(struct oc_vpn_proto **protos)
-{
-	struct oc_vpn_proto *pr;
-
-	*protos = pr = calloc(sizeof(*pr), 2);
-	if (!pr)
-		return -ENOMEM;
-
-	pr[0].name = "anyconnect";
-	pr[0].pretty_name = _("Cisco AnyConnect or openconnect");
-	pr[0].description = _("Compatible with Cisco AnyConnect SSL VPN, as well as ocserv");
-	pr[0].flags = OC_PROTO_PROXY | OC_PROTO_CSD | OC_PROTO_AUTH_CERT | OC_PROTO_AUTH_OTP | OC_PROTO_AUTH_STOKEN;
-
-	pr[1].name = "nc";
-	pr[1].pretty_name = _("Juniper Network Connect");
-	pr[1].description = _("Compatible with Juniper Network Connect");
-	pr[1].flags = OC_PROTO_PROXY | OC_PROTO_CSD | OC_PROTO_AUTH_CERT | OC_PROTO_AUTH_OTP;
-
-	/* Newer protocols like GlobalProtect and Pulse only came after
-	 * the openconnect_get_supported_protocols() API, so we don't need
-	 * hard-coded knowledge about those. */
-
-#if OPENCONNECT_CHECK_VER(5,2)
-	/* OpenConnect v7.05 (API 5.2) onwards had nc support. */
-	return 2;
-#else
-	/* Before that, only AnyConnect. */
-	return 1;
-#endif
-}
-
-static void openconnect_free_supported_protocols(struct oc_vpn_proto *protos)
-{
-	free(protos);
-}
-#endif /* !OPENCONNECT_CHECK_VER(5,5) */
 
 typedef struct {
 	int nr_supported_protocols;

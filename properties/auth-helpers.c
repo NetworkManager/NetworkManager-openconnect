@@ -177,10 +177,8 @@ auth_widget_update_connection (GtkBuilder *builder,
 {
 	update_cert_from_filechooser (builder, NM_OPENCONNECT_KEY_CACERT, "ca_chooser", s_vpn);
 
-#if OPENCONNECT_CHECK_VER(5,8)
 	update_cert_from_filechooser (builder, NM_OPENCONNECT_KEY_MCACERT, "mca_cert_chooser", s_vpn);
 	update_key_from_filechooser (builder, NM_OPENCONNECT_KEY_MCAKEY, "mca_cert_chooser", s_vpn);
-#endif
 
 	update_cert_from_filechooser (builder, NM_OPENCONNECT_KEY_USERCERT, "user_cert_chooser", s_vpn);
 	update_key_from_filechooser (builder, NM_OPENCONNECT_KEY_PRIVKEY, "user_cert_chooser", s_vpn);

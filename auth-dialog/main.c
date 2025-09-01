@@ -45,46 +45,17 @@
 
 #include "openconnect.h"
 
-#if !OPENCONNECT_CHECK_VER(2,1)
-#define __openconnect_set_token_mode(...) -EOPNOTSUPP
-#elif !OPENCONNECT_CHECK_VER(2,2)
-#define __openconnect_set_token_mode(vpninfo, mode, secret) openconnect_set_stoken_mode(vpninfo, 1, secret)
-#else
 #define __openconnect_set_token_mode openconnect_set_token_mode
-#endif
 
-#if OPENCONNECT_CHECK_VER(3,0)
 #define NEWGROUP_SUPPORTED		1
 #define AUTHGROUP_OPT(form)		(void *)(form)->authgroup_opt
 #define AUTHGROUP_SELECTION(form)	(form)->authgroup_selection
 #define FORMCHOICE(sopt, i)		((sopt)->choices[i])
 #define IGNORE_OPT(opt)			((opt)->flags & OC_FORM_OPT_IGNORE)
-#else
-#define NEWGROUP_SUPPORTED		0
-#define AUTHGROUP_OPT(form)		NULL
-#define AUTHGROUP_SELECTION(form)	0
-#define FORMCHOICE(sopt, i)		(&(sopt)->choices[i])
-#define IGNORE_OPT(opt)			0
-#define OC_FORM_RESULT_ERR		-1
-#define OC_FORM_RESULT_OK		0
-#define OC_FORM_RESULT_CANCELLED	1
-#define OC_FORM_RESULT_NEWGROUP		2
-#endif
 
-#if OPENCONNECT_CHECK_VER(4,0)
 #define dup_option_value(opt)		g_strdup((opt)->_value);
 #define OC3DUP(x)			(x)
 #define write_config_const		const
-#else
-#define dup_option_value(opt)		g_strdup((opt)->value);
-#define openconnect_set_option_value(opt, val) do { \
-		struct oc_form_opt *_o = (opt);				\
-		free(_o->value); _o->value = g_strdup(val);		\
-	} while (0)
-#define openconnect_free_cert_info(v, x) free(x)
-#define OC3DUP(x)			g_strdup(x)
-#define write_config_const		/* */
-#endif
 
 #define AUTOSUBMIT_LIMIT 5
 
@@ -639,8 +610,6 @@ static gboolean set_initial_authgroup (auth_ui_data *ui_data, struct oc_auth_for
 	return FALSE;
 }
 
-#if OPENCONNECT_CHECK_VER(5,7)
-
 struct WebviewContext {
 	struct openconnect_info *vpninfo;
 	WebKitWebView *webview;
@@ -800,10 +769,6 @@ static int open_webview(struct openconnect_info *vpninfo, const char *login_uri,
 	return 0;
 }
 
-#endif // OPENCONNECT_CHECK_VER(5,7)
-
-#if OPENCONNECT_CHECK_VER(5,8) && GTK_CHECK_VERSION(3,22,0)
-
 static gboolean ui_open_uri (char *login_uri)
 {
 	GError *err = NULL;
@@ -827,8 +792,6 @@ static int open_uri(struct openconnect_info *vpninfo, const char *login_uri, voi
 	g_idle_add((GSourceFunc)ui_open_uri, g_strdup(login_uri));
 	return 0;
 }
-
-#endif // OPENCONNECT_CHECK_VER(5,8) && GTK_CHECK_VERSION(3,22,0)
 
 static int nm_process_auth_form (void *cbdata, struct oc_auth_form *form)
 {
@@ -922,26 +885,6 @@ typedef struct cert_data {
 	char *cert_details;
 	const char *reason;
 } cert_data;
-
-#if !OPENCONNECT_CHECK_VER(1,5)
-static char *openconnect_get_cert_details(struct openconnect_info *vpninfo,
-					  OPENCONNECT_X509 *cert)
-{
-        BIO *bp = BIO_new(BIO_s_mem());
-        BUF_MEM *certinfo;
-        char zero = 0;
-        char *ret;
-
-        X509_print_ex(bp, cert, 0, 0);
-        BIO_write(bp, &zero, 1);
-        BIO_get_mem_ptr(bp, &certinfo);
-
-        ret = strdup(certinfo->data);
-        BIO_free(bp);
-
-        return ret;
-}
-#endif
 
 static void cert_dialog_cancel_clicked (GtkButton *btn, GtkDialog *dlg)
 {
@@ -1056,9 +999,6 @@ static gboolean user_validate_cert(cert_data *data)
 
 /* runs in worker thread */
 static int validate_peer_cert(void *cbdata,
-#if !OPENCONNECT_CHECK_VER(5,0)
-			      OPENCONNECT_X509 *peer_cert,
-#endif
 			      const char *reason)
 {
 	auth_ui_data *ui_data = cbdata;
@@ -1066,18 +1006,7 @@ static int validate_peer_cert(void *cbdata,
 	cert_data *data;
 	char *certkey;
 	char *accepted_hash = NULL;
-#if OPENCONNECT_CHECK_VER(5,0)
 	const char *fingerprint = openconnect_get_peer_cert_hash(ui_data->vpninfo);
-#else
-	char fingerprint[41];
-
-	ret = openconnect_get_cert_sha1(ui_data->vpninfo, peer_cert, fingerprint);
-	if (ret)
-		return ret;
-
-#define openconnect_check_peer_cert_hash(v, h) strcmp(h, fingerprint)
-#define openconnect_get_peer_cert_details(v) openconnect_get_cert_details(v, peer_cert);
-#endif
 
 	certkey = g_strdup_printf ("certificate:%s:%d",
 				   openconnect_get_hostname(ui_data->vpninfo),
@@ -1224,15 +1153,11 @@ static int get_config (auth_ui_data *ui_data,
 	char *xmlconfig;
 	char *hostname;
 	char *csd;
-#if OPENCONNECT_CHECK_VER(5,8)
 	char *mcakey, *mcacert, *mca_key_pass;
-#endif
 	char *sslkey, *cert;
 	char *csd_wrapper;
 	char *reported_os;
-#if OPENCONNECT_CHECK_VER(5,5)
 	char *key_pass;
-#endif
 	char *pem_passphrase_fsid;
 	char *cafile;
 	char *token_mode;
@@ -1275,11 +1200,7 @@ static int get_config (auth_ui_data *ui_data,
 	}
 
 	protocol = g_hash_table_lookup (options, NM_OPENCONNECT_KEY_PROTOCOL);
-#if OPENCONNECT_CHECK_VER(5,1)
 	if (protocol && openconnect_set_protocol(vpninfo, protocol))
-#else
-	if (protocol && strcmp(protocol, "anyconnect"))
-#endif
 		return -EINVAL;
 
 	if (!g_strcmp0(protocol, "pulse"))
@@ -1308,7 +1229,6 @@ static int get_config (auth_ui_data *ui_data,
 	if (proxy && proxy[0] && openconnect_set_http_proxy(vpninfo, OC3DUP (proxy)))
 		return -EINVAL;
 
-#if OPENCONNECT_CHECK_VER(5,8)
 	mcacert = g_hash_table_lookup (options, NM_OPENCONNECT_KEY_MCACERT);
 	mcakey  = g_hash_table_lookup (options, NM_OPENCONNECT_KEY_MCAKEY);
 	openconnect_set_mca_cert(vpninfo, OC3DUP(mcacert), OC3DUP(mcakey));
@@ -1316,18 +1236,15 @@ static int get_config (auth_ui_data *ui_data,
 	mca_key_pass = g_hash_table_lookup(options, NM_OPENCONNECT_KEY_MCA_PASS);
 	if (mca_key_pass)
 		openconnect_set_mca_key_password(vpninfo, mca_key_pass);
-#endif
 
 	cert = g_hash_table_lookup (options, NM_OPENCONNECT_KEY_USERCERT);
 	sslkey = g_hash_table_lookup (options, NM_OPENCONNECT_KEY_PRIVKEY);
 	openconnect_set_client_cert (vpninfo, OC3DUP (cert), OC3DUP (sslkey));
 
-#if OPENCONNECT_CHECK_VER(5,5)
 	key_pass = g_hash_table_lookup (options,
 					      NM_OPENCONNECT_KEY_KEY_PASS);
 	if (key_pass)
 		openconnect_set_key_password(vpninfo, key_pass);
-#endif
 	pem_passphrase_fsid = g_hash_table_lookup (options,
 						   NM_OPENCONNECT_KEY_PEM_PASSPHRASE_FSID);
 	if (pem_passphrase_fsid && cert && !strcmp(pem_passphrase_fsid, "yes"))
@@ -1346,11 +1263,8 @@ static int get_config (auth_ui_data *ui_data,
 			ret = __openconnect_set_token_mode(vpninfo, OC_TOKEN_MODE_STOKEN, NULL);
 		else if (!strcmp(token_mode, "totp") && token_secret)
 			ret = __openconnect_set_token_mode(vpninfo, OC_TOKEN_MODE_TOTP, token_secret);
-#if OPENCONNECT_CHECK_VER(3,4)
 		else if (!strcmp(token_mode, "hotp") && token_secret)
 			ret = __openconnect_set_token_mode(vpninfo, OC_TOKEN_MODE_HOTP, token_secret);
-#endif
-#if OPENCONNECT_CHECK_VER(5,0)
 		else if (!strcmp(token_mode, "yubioath")) {
 			/* This needs to be done from a thread because it can call back to
 			   ask for the PIN */
@@ -1360,7 +1274,6 @@ static int get_config (auth_ui_data *ui_data,
 			else
 				ui_data->token_secret = NULL;
 		}
-#endif
 		if (ret)
 			fprintf(stderr, "Failed to initialize software token: %d\n", ret);
 	}
@@ -1385,7 +1298,6 @@ static void populate_vpnhost_combo(auth_ui_data *ui_data)
 	}
 }
 
-#if OPENCONNECT_CHECK_VER(3,4)
 static int update_token(void *cbdata, const char *tok)
 {
 	auth_ui_data *ui_data = cbdata;
@@ -1394,7 +1306,6 @@ static int update_token(void *cbdata, const char *tok)
 
 	return 0;
 }
-#endif
 
 static int write_new_config(void *cbdata, write_config_const char *buf, int buflen)
 {
@@ -1508,48 +1419,13 @@ static void hash_table_merge (GHashTable *old_hash, GHashTable *new_hash)
 
 static char *oc_server_url(auth_ui_data *ui_data)
 {
-#if OPENCONNECT_CHECK_VER(5,7)
 	return g_strdup(openconnect_get_connect_url(ui_data->vpninfo));
-#elif OPENCONNECT_CHECK_VER(5,3)
-	/* This is basically what OpenConnect does to create it for us,
-	 * in newer versions. Ideally we wouldn't have to get involved
-	 * in any of this, but for backward compatibiity we can tolerate
-	 * it because it lets us use the --resolve trick, and thus fix
-	 * things for users whose servers need SNI, without having to
-	 * upgrade openconnect first. */
-	const char *dnsname = openconnect_get_dnsname(ui_data->vpninfo);
-	int port = openconnect_get_port(ui_data->vpninfo);
-	const char *urlpath = NULL;
-
-	if (ui_data->connect_urlpath)
-		urlpath = openconnect_get_urlpath(ui_data->vpninfo);
-
-	if (port == 443)
-		return g_strdup_printf("https://%s/%s",
-				       dnsname, urlpath ? urlpath : "");
-	else
-		return g_strdup_printf("https://%s:%d/%s",
-				       dnsname, port, urlpath ? urlpath : "");
-#else
-	/* Prior to OpenConnect v7.07 (API 5.3) openconnect didn't have the
-	 * --resolve argument, so needs the IP address — which confusingly
-	 * is what it returns from openconnect_get_hostname() — in order to
-	 * ensure that it connects to the same server we authenticated to,
-	 * even when round robin or geo DNS would give a different lookup.
-	 *
-	 * This does mean that SNI-based proxies on the server end are going
-	 * to fail to find the right target, for older OpenConnect. */
-	return g_strdup_printf ("%s:%d",
-				openconnect_get_hostname(ui_data->vpninfo),
-				openconnect_get_port(ui_data->vpninfo));
-#endif
 }
 
 static char *oc_server_resolve(struct openconnect_info *vpninfo)
 {
 	/* Versions older than OpenConnect v7.07 (API 5.3) didn't
 	 * support the --resolve argument. Don't confuse them. */
-#if OPENCONNECT_CHECK_VER(5,3)
 	const char *ipaddr = openconnect_get_hostname(vpninfo);
 	const char *dnsname = openconnect_get_dnsname(vpninfo);
 
@@ -1562,9 +1438,9 @@ static char *oc_server_resolve(struct openconnect_info *vpninfo)
 		}
 		return g_strdup_printf("%s:%.*s", dnsname, l, ipaddr);
 	}
-#endif
 	return NULL;
 }
+
 static gboolean cookie_obtained(auth_ui_data *ui_data)
 {
 	ui_data->getting_cookie = FALSE;
@@ -1616,22 +1492,12 @@ static gboolean cookie_obtained(auth_ui_data *ui_data)
 		g_hash_table_insert (ui_data->secrets, key, value);
 		openconnect_clear_cookie(ui_data->vpninfo);
 
-#if OPENCONNECT_CHECK_VER(5,0)
 		cert = openconnect_get_peer_cert_hash (ui_data->vpninfo);
 		if (cert) {
 			key = g_strdup (NM_OPENCONNECT_KEY_GWCERT);
 			value = g_strdup (cert);
 			g_hash_table_insert (ui_data->secrets, key, value);
 		}
-#else
-		cert = openconnect_get_peer_cert (ui_data->vpninfo);
-		if (cert) {
-			key = g_strdup (NM_OPENCONNECT_KEY_GWCERT);
-			value = g_malloc0 (41);
-			openconnect_get_cert_sha1(ui_data->vpninfo, (void *)cert, value);
-			g_hash_table_insert (ui_data->secrets, key, value);
-		}
-#endif
 		if (get_save_passwords(ui_data->secrets)) {
 			g_hash_table_foreach(ui_data->success_passwords,
 					     keyring_store_passwords,
@@ -1933,7 +1799,6 @@ static auth_ui_data *init_ui_data (char *vpn_name, GHashTable *options, GHashTab
 							   nm_process_auth_form, write_progress,
 							   ui_data);
 
-#if OPENCONNECT_CHECK_VER(5,8)
 	/* The useragent provided to openconnect_vpninfo_new() gets the
 	 * OpenConnect version appended to it. But some servers need the
 	 * useragent to *precisely* match a known string; support for
@@ -1942,21 +1807,9 @@ static auth_ui_data *init_ui_data (char *vpn_name, GHashTable *options, GHashTab
 	if (vpn_useragent)
 		openconnect_set_useragent(ui_data->vpninfo, vpn_useragent);
 
-#if GTK_CHECK_VERSION(3,22,0)
 	openconnect_set_external_browser_callback(ui_data->vpninfo, open_uri);
-#endif
-#endif
-#if OPENCONNECT_CHECK_VER(5,7)
 	openconnect_set_webview_callback(ui_data->vpninfo, open_webview);
-#endif
-
-#if OPENCONNECT_CHECK_VER(1,4)
 	openconnect_set_cancel_fd (ui_data->vpninfo, ui_data->cancel_pipes[0]);
-#endif
-
-#if 0
-	ui_data->vpninfo->proxy_factory = px_proxy_factory_new();
-#endif
 
 	return ui_data;
 }
@@ -2115,9 +1968,7 @@ int main (int argc, char **argv)
 	}
 
 	if (allow_interaction) {
-#if OPENCONNECT_CHECK_VER(3,4)
 		openconnect_set_token_callbacks (_ui_data->vpninfo, _ui_data, NULL, update_token);
-#endif
 
 		build_main_dialog(_ui_data);
 
