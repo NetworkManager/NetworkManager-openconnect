@@ -33,37 +33,6 @@
 
 #include <openconnect.h>
 
-#ifndef OPENCONNECT_CHECK_VER
-#define OPENCONNECT_CHECK_VER(x,y) 0
-#endif
-
-#if !OPENCONNECT_CHECK_VER(2,1)
-#define openconnect_has_stoken_support() 0
-#endif
-#if !OPENCONNECT_CHECK_VER(2,2)
-#define openconnect_has_oath_support() 0
-#endif
-#if !OPENCONNECT_CHECK_VER(5,0)
-#define openconnect_has_yubioath_support() 0
-#endif
-
-#if !OPENCONNECT_CHECK_VER(5,5)
-#define OC_PROTO_PROXY				(1<<0)
-#define OC_PROTO_CSD				(1<<1)
-#define OC_PROTO_AUTH_CERT			(1<<2)
-#define OC_PROTO_AUTH_OTP			(1<<3)
-#define OC_PROTO_AUTH_STOKEN		(1<<4)
-#endif
-
-#if !OPENCONNECT_CHECK_VER(5,7)
-#define OC_PROTO_PERIODIC_TROJAN	(1<<5)
-#define OC_PROTO_HIDDEN				(1<<6)
-#endif
-
-#if !OPENCONNECT_CHECK_VER(5,8)
-#define OC_PROTO_AUTH_MCA			(1<<7)
-#endif
-
 #include "auth-helpers.h"
 
 #if !GTK_CHECK_VERSION(4,0,0)
@@ -157,7 +126,7 @@ init_token_mode_options (GtkComboBox *token_mode)
 		else if (!strcmp (token_type, "totp") && !openconnect_has_oath_support ())
 			iter_valid = gtk_list_store_remove (token_mode_list, &iter);
 		else if (!strcmp (token_type, "hotp") &&
-				 (!openconnect_has_oath_support () || !OPENCONNECT_CHECK_VER(3,4)))
+				 (!openconnect_has_oath_support ()))
 			iter_valid = gtk_list_store_remove (token_mode_list, &iter);
 		else if (!strcmp (token_type, "yubioath") && !openconnect_has_yubioath_support ())
 			iter_valid = gtk_list_store_remove (token_mode_list, &iter);
@@ -257,8 +226,6 @@ init_protocol_combo_options (GtkComboBox *protocol_combo)
 {
 	GtkListStore *protocol_combo_list = GTK_LIST_STORE (gtk_combo_box_get_model (protocol_combo));
 	GtkTreeIter iter;
-
-#if OPENCONNECT_CHECK_VER(5,5)
 	struct oc_vpn_proto *protos;
 	int i, n;
 	n = openconnect_get_supported_protocols(&protos);
@@ -271,24 +238,8 @@ init_protocol_combo_options (GtkComboBox *protocol_combo)
 						   -1);
 	}
 	openconnect_free_supported_protocols(protos);
-#else
-	gtk_list_store_append(protocol_combo_list, &iter);
-	gtk_list_store_set(protocol_combo_list, &iter,
-					   0, _("Cisco AnyConnect"),
-					   1, "anyconnect",
-					   2, OC_PROTO_PROXY | OC_PROTO_CSD | OC_PROTO_AUTH_CERT | OC_PROTO_AUTH_OTP | OC_PROTO_AUTH_STOKEN,
-					   -1);
-#  if OPENCONNECT_CHECK_VER(5,1)
-	gtk_list_store_append(protocol_combo_list, &iter);
-	gtk_list_store_set(protocol_combo_list, &iter,
-					   0, _("Juniper/Pulse Network Connect"),
-					   1, "nc",
-					   2, OC_PROTO_PROXY | OC_PROTO_CSD | OC_PROTO_AUTH_CERT | OC_PROTO_AUTH_OTP | OC_PROTO_AUTH_STOKEN,
-					   -1);
-#  endif
-#endif
 
-	return OPENCONNECT_CHECK_VER(5,1);
+	return TRUE;
 }
 
 static gboolean
