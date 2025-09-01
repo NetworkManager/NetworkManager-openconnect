@@ -13,9 +13,6 @@ CLEANFILES = *.bak *~
 dbusservicedir = $(datadir)/dbus-1/system.d
 dbusservice_DATA = nm-openconnect-service.conf
 
-nmvpnservicedir = $(NM_VPN_SERVICE_DIR)
-nmvpnservice_DATA = nm-openconnect-service.name
-
 ###############################################################################
 
 src_cppflags = \
@@ -64,9 +61,6 @@ plugindir = $(libdir)/NetworkManager
 plugin_LTLIBRARIES += properties/libnm-vpn-plugin-openconnect.la
 if WITH_GNOME
 plugin_LTLIBRARIES += properties/libnm-vpn-plugin-openconnect-editor.la
-if WITH_LIBNM_GLIB
-plugin_LTLIBRARIES += properties/libnm-openconnect-properties.la
-endif
 endif
 if WITH_GTK4
 plugin_LTLIBRARIES += properties/libnm-gtk4-vpn-plugin-openconnect-editor.la
@@ -196,34 +190,7 @@ properties_libnm_gtk4_vpn_plugin_openconnect_editor_la_LDFLAGS = \
 	-avoid-version \
 	-Wl,--version-script="$(srcdir)/properties/libnm-vpn-plugin-openconnect-editor.ver"
 
-###############################################################################
-
-properties_libnm_openconnect_properties_la_SOURCES = \
-	$(plugin_sources) \
-	$(editor_sources)
-
-nodist_properties_libnm_openconnect_properties_la_SOURCES = \
-	properties/resources.h \
-	properties/resources.c
-
-properties_libnm_openconnect_properties_la_CFLAGS = \
-	-DNM_VPN_OLD \
-	-DNETWORKMANAGER_COMPILATION=NM_NETWORKMANAGER_COMPILATION_LIB \
-	$(properties_cppflags) \
-	$(GTK_CFLAGS) \
-	$(LIBNM_GLIB_CFLAGS)
-
-properties_libnm_openconnect_properties_la_LIBADD = \
-	$(GTK_LIBS) \
-	$(LIBNM_GLIB_LIBS) \
-	$(OPENCONNECT_LIBS)
-
-properties_libnm_openconnect_properties_la_LDFLAGS = \
-	-avoid-version \
-	-Wl,--version-script="$(srcdir)/properties/libnm-openconnect-properties.ver"
-
 EXTRA_DIST += \
-	properties/libnm-openconnect-properties.ver \
 	properties/libnm-vpn-plugin-openconnect.ver \
 	properties/libnm-vpn-plugin-openconnect-editor.ver \
 	properties/nm-openconnect-dialog.ui
@@ -262,21 +229,6 @@ auth_dialog_nm_openconnect_auth_dialog_LDADD = \
 	$(LIBSECRET_LIBS)
 
 
-if WITH_LIBNM_GLIB
-# Install a file with full path to plugins for an old gnome-shell
-# https://bugzilla.gnome.org/show_bug.cgi?id=693590
-install-data-hook:
-	mkdir -p $(DESTDIR)$(sysconfdir)/NetworkManager/VPN
-	sed -e "1s|^|# This file is obsoleted by a file in $(NM_VPN_SERVICE_DIR)\n\n|" \
-	    -e 's|[@]LIBEXECDIR[@]|$(libexecdir)|g' \
-	    -e 's|[@]PLUGINDIR[@]|@NM_PLUGIN_DIR@|g' \
-	    <$(srcdir)/nm-openconnect-service.name.in \
-	    >$(DESTDIR)$(sysconfdir)/NetworkManager/VPN/nm-openconnect-service.name
-
-uninstall-hook:
-	 rm -f $(DESTDIR)$(sysconfdir)/NetworkManager/VPN/nm-openconnect-service.name
-endif
-
 appdatadir = $(datadir)/metainfo
 appdata_files = $(appdata_in_files:.xml.in=.xml)
 if WITH_GNOME
@@ -285,17 +237,11 @@ endif
 appdata_in_files = appdata/network-manager-openconnect.metainfo.xml.in
 @INTLTOOL_XML_RULE@
 
-nm-openconnect-service.name: $(srcdir)/nm-openconnect-service.name.in
-	sed -e 's|[@]LIBEXECDIR[@]|$(libexecdir)|g' \
-	    -e 's|[@]PLUGINDIR[@]/|@NM_PLUGIN_DIR_NAME_FILE@|g' \
-	    $< >$@
-
 DISTCHECK_CONFIGURE_FLAGS = \
 	--enable-more-warnings=yes \
 	--with-gtk4
 
 CLEANFILES +=				\
-	$(nmvpnservice_DATA)		\
 	$(desktop_DATA)			\
 	$(appdata_files)
 
@@ -304,7 +250,6 @@ DISTCLEANFILES = intltool-extract intltool-merge intltool-update
 ACLOCAL_AMFLAGS = -I m4
 
 EXTRA_DIST += \
-	nm-openconnect-service.name.in \
 	$(dbusservice_DATA) \
 	$(desktop_in_files) \
 	$(icon_DATA) \
