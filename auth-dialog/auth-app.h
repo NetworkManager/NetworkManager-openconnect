@@ -24,17 +24,23 @@
  *   Boston, MA 02110-1301 USA
  */
 
-#include "auth-app.h"
+#pragma once
 
-int
-main (int    argc,
-      char **argv)
-{
-  g_autoptr (AuthApp) app = NULL;
-  int ret;
+#include <adwaita.h>
 
-  app = auth_app_new ();
-  ret = g_application_run (G_APPLICATION (app), argc, argv);
+#define AUTH_APP_TYPE (auth_app_get_type ())
 
-  return ret;
-}
+G_DECLARE_FINAL_TYPE (AuthApp, auth_app, AUTH, APP, AdwApplication)
+
+typedef struct {
+  char *hostname;
+  char *hostaddress;
+  char *usergroup;
+} VPNHost;
+
+AuthApp *auth_app_new (void);
+
+void auth_app_connect_host (AuthApp *self,
+                            char    *hostname);
+
+void auth_app_login (AuthApp *self);

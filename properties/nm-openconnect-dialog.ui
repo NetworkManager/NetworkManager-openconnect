@@ -1,568 +1,159 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="3.0"/>
-  <object class="GtkGrid" id="openconnect-vbox">
-    <property name="visible">True</property>
-    <property name="row_spacing">6</property>
-    <property name="column_spacing">6</property>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkBox" id="openconnect-vbox">
+    <property name="visible">true</property>
+    <property name="spacing">12</property>
+    <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
     <child>
-      <object class="GtkLabel" id="label22">
-        <property name="visible">True</property>
-        <property name="label" translatable="yes">General</property>
-        <property name="use_underline">False</property>
-        <attributes>
-          <attribute name="weight" value="bold"/>
-        </attributes>
-        <property name="justify">GTK_JUSTIFY_LEFT</property>
-        <property name="wrap">False</property>
-        <property name="selectable">False</property>
-        <property name="xalign">0</property>
-        <property name="margin_bottom">6</property>
-        <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-        <property name="width_chars">-1</property>
-        <property name="single_line_mode">False</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">0</property>
-        <property name="width">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="vpn_protocol_label">
-        <property name="visible">True</property>
-        <property name="label" translatable="yes">_VPN Protocol</property>
-        <property name="use_underline">True</property>
-        <property name="use_markup">False</property>
-        <property name="justify">GTK_JUSTIFY_LEFT</property>
-        <property name="wrap">False</property>
-        <property name="selectable">False</property>
-        <property name="xalign">1</property>
-        <property name="yalign">0.5</property>
-        <property name="mnemonic_widget">protocol_combo</property>
-        <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-        <property name="width_chars">-1</property>
-        <property name="single_line_mode">False</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">1</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkComboBox" id="protocol_combo">
-        <property name="visible">True</property>
-        <property name="model">protocol_combo_list</property>
-        <property name="active">0</property>
+      <object class="AdwPreferencesGroup" id="general_group">
+        <property name="title" translatable="1">General</property>
         <child>
-          <object class="GtkCellRendererText" id="renderer"/>
-          <attributes>
-                <attribute name="text">0</attribute>
-          </attributes>
+          <object class="AdwComboRow" id="protocol_combo">
+            <property name="title" translatable="1">_Protocol</property>
+            <property name="use-underline">true</property>
+            <property name="model">
+              <object class="GtkStringList" id="model-list">
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwEntryRow" id="gateway_entry">
+            <property name="title" translatable="1">_Gateway</property>
+            <property name="use-underline">true</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwEntryRow" id="user_agent_entry">
+            <property name="title" translatable="1">_User Agent</property>
+            <property name="use-underline">true</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwActionRow" id="ca_action_row">
+            <property name="title" translatable="1">_CA</property>
+            <property name="use-underline">true</property>
+            <property name="visible">false</property>
+            <!-- NmaCertChooser -->
+          </object>
+        </child>
+        <child>
+          <object class="AdwEntryRow" id="proxy_entry">
+            <property name="title" translatable="1">_Proxy</property>
+            <property name="use-underline">true</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwExpanderRow" id="csd_button">
+            <property name="title" translatable="1">Allow security scanner _trojan (CSD)</property>
+            <property name="show-enable-switch">true</property>
+            <property name="use-underline">true</property>
+            <child>
+              <object class="AdwEntryRow" id="csd_wrapper_entry">
+                <property name="title" translatable="1">Trojan (CSD) _Wrapper Script</property>
+                <property name="use-underline">true</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwEntryRow" id="reported_os">
+            <property name="title" translatable="1">Reported OS</property>
+            <property name="tooltip_text" translatable="1">Common values: linux linux-64 win mac-intel android apple-ios</property>
+            <property name="use-underline">true</property>
+          </object>
         </child>
       </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">1</property>
-      </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="gateway_label">
-        <property name="visible">True</property>
-        <property name="label" translatable="yes">_Gateway</property>
-        <property name="use_underline">True</property>
-        <property name="use_markup">False</property>
-        <property name="justify">GTK_JUSTIFY_LEFT</property>
-        <property name="wrap">False</property>
-        <property name="selectable">False</property>
-        <property name="xalign">1</property>
-        <property name="yalign">0.5</property>
-        <property name="mnemonic_widget">gateway_entry</property>
-        <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-        <property name="width_chars">-1</property>
-        <property name="single_line_mode">False</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="gateway_entry">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="editable">True</property>
-        <property name="visibility">True</property>
-        <property name="max_length">0</property>
-        <property name="text"/>
-        <property name="has_frame">True</property>
-        <property name="invisible_char">&#x2022;</property>
-        <property name="activates_default">False</property>
-        <property name="hexpand">True</property>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="useragent_label">
-        <property name="visible">True</property>
-        <property name="label" translatable="yes">_User Agent:</property>
-        <property name="use_underline">True</property>
-        <property name="use_markup">False</property>
-        <property name="justify">GTK_JUSTIFY_LEFT</property>
-        <property name="wrap">False</property>
-        <property name="selectable">False</property>
-        <property name="xalign">1</property>
-        <property name="yalign">0.5</property>
-        <property name="mnemonic_widget">user_agent_entry</property>
-        <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-        <property name="width_chars">-1</property>
-        <property name="single_line_mode">False</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">3</property>
-      </packing>
-    </child>
-     <child>
-      <object class="GtkEntry" id="user_agent_entry">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="editable">True</property>
-        <property name="visibility">True</property>
-        <property name="max_length">0</property>
-        <property name="text"/>
-        <property name="has_frame">True</property>
-        <property name="invisible_char">&#x2022;</property>
-        <property name="activates_default">False</property>
-        <property name="hexpand">True</property>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">3</property>
-      </packing>
-    </child>
-    <child>
-      <object class="NmaCertChooser" id="ca_chooser">
-        <property name="flags">9</property>
-        <property name="title">CA</property>
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-      </object>
-      <packing>
-        <property name="left-attach">0</property>
-        <property name="top-attach">4</property>
-        <property name="width">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="proxy_label">
-        <property name="visible">True</property>
-        <property name="label" translatable="yes">_Proxy</property>
-        <property name="use_underline">True</property>
-        <property name="use_markup">False</property>
-        <property name="justify">GTK_JUSTIFY_LEFT</property>
-        <property name="wrap">False</property>
-        <property name="selectable">False</property>
-        <property name="xalign">1</property>
-        <property name="yalign">0.5</property>
-        <property name="mnemonic_widget">proxy_entry</property>
-        <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-        <property name="width_chars">-1</property>
-        <property name="single_line_mode">False</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">5</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="proxy_entry">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="editable">True</property>
-        <property name="visibility">True</property>
-        <property name="max_length">0</property>
-        <property name="text"/>
-        <property name="has_frame">True</property>
-        <property name="invisible_char">&#x2022;</property>
-        <property name="activates_default">False</property>
-        <property name="hexpand">True</property>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">5</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkCheckButton" id="csd_button">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="label" translatable="yes">Allow security scanner _trojan (CSD)</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">True</property>
-        <property name="active">False</property>
-        <property name="inconsistent">False</property>
-        <property name="draw_indicator">True</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">6</property>
-        <property name="width">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="csd_trojan_script_label">
-        <property name="visible">True</property>
-        <property name="label" translatable="yes">Trojan (CSD) _Wrapper Script</property>
-        <property name="use_underline">True</property>
-        <property name="use_markup">False</property>
-        <property name="justify">GTK_JUSTIFY_LEFT</property>
-        <property name="wrap">False</property>
-        <property name="selectable">False</property>
-        <property name="xalign">1</property>
-        <property name="yalign">0.5</property>
-        <property name="mnemonic_widget">csd_wrapper_entry</property>
-        <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-        <property name="width_chars">-1</property>
-        <property name="single_line_mode">False</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="csd_wrapper_entry">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="editable">True</property>
-        <property name="visibility">True</property>
-        <property name="max_length">0</property>
-        <property name="text"/>
-        <property name="has_frame">True</property>
-        <property name="invisible_char">&#x2022;</property>
-        <property name="activates_default">False</property>
-        <property name="hexpand">True</property>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">7</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="reported_os_label">
-        <property name="visible">True</property>
-        <property name="label" translatable="yes">Reported OS</property>
-        <property name="tooltip_text" translatable="yes">Common values: linux linux-64 win mac-intel android apple-ios</property>
-        <property name="use_underline">True</property>
-        <property name="use_markup">False</property>
-        <property name="justify">GTK_JUSTIFY_LEFT</property>
-        <property name="wrap">False</property>
-        <property name="selectable">False</property>
-        <property name="xalign">1</property>
-        <property name="yalign">0.5</property>
-        <property name="mnemonic_widget">reported_os</property>
-        <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-        <property name="width_chars">-1</property>
-        <property name="single_line_mode">False</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">8</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkEntry" id="reported_os">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="editable">True</property>
-        <property name="visibility">True</property>
-        <property name="max_length">0</property>
-        <property name="text"/>
-        <property name="has_frame">True</property>
-        <property name="invisible_char">&#x2022;</property>
-        <property name="activates_default">False</property>
-        <property name="hexpand">True</property>
-      </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">8</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="label25">
-        <property name="visible">True</property>
-        <property name="label" translatable="yes">Certificate Authentication</property>
-        <property name="use_underline">False</property>
-        <attributes>
-          <attribute name="weight" value="bold"/>
-        </attributes>
-        <property name="justify">GTK_JUSTIFY_LEFT</property>
-        <property name="wrap">False</property>
-        <property name="selectable">False</property>
-        <property name="xalign">0</property>
-        <property name="margin_top">12</property>
-        <property name="margin_bottom">6</property>
-        <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-        <property name="width_chars">-1</property>
-        <property name="single_line_mode">False</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">9</property>
-        <property name="width">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="NmaCertChooser" id="mca_cert_chooser">
-        <property name="flags">8</property>
-        <property name="title">Machine</property>
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-      </object>
-      <packing>
-        <property name="left-attach">0</property>
-        <property name="top-attach">10</property>
-        <property name="width">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="NmaCertChooser" id="user_cert_chooser">
-        <property name="flags">8</property>
-        <property name="title">User</property>
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-      </object>
-      <packing>
-        <property name="left-attach">0</property>
-        <property name="top-attach">11</property>
-        <property name="width">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkCheckButton" id="fsid_button">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="label" translatable="yes">Use _FSID for key passphrase</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">True</property>
-        <property name="active">False</property>
-        <property name="inconsistent">False</property>
-        <property name="draw_indicator">True</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">12</property>
-        <property name="width">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkCheckButton" id="prevent_invalid_cert_button">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="label" translatable="yes">Prevent user from manually accepting invalid certificates</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">True</property>
-        <property name="active">False</property>
-        <property name="inconsistent">False</property>
-        <property name="draw_indicator">True</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">13</property>
-        <property name="width">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkCheckButton" id="disable_udp_button">
-        <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="label" translatable="yes">Disable UDP (DTLS and ESP)</property>
-        <property name="tooltip-text" translatable="yes">In most cases, OpenConnect can detect network conditions or server configurations that do not permit UDP-based tunnels (including DTLS and ESP) to work correctly, and fall back automatically to a TLS-based tunnel.
+      <object class="AdwPreferencesGroup" id="ca_group">
+        <property name="title" translatable="1">Certificate Authentication</property>
+        <child>
+          <object class="AdwSwitchRow" id="fsid_button">
+            <property name="title" translatable="1">Use _FSID for key passphrase</property>
+            <property name="use-underline">true</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwSwitchRow" id="prevent_invalid_cert_button">
+            <property name="title" translatable="1">Prevent user from manually accepting invalid certificates</property>
+            <property name="use-underline">true</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwSwitchRow" id="disable_udp_button">
+            <property name="title" translatable="1">Disable UDP (DTLS and ESP)</property>
+            <property name="use-underline">true</property>
+            <property name="tooltip-text" translatable="1">In most cases, OpenConnect can detect network conditions or server configurations that do not permit UDP-based tunnels (including DTLS and ESP) to work correctly, and fall back automatically to a TLS-based tunnel.
 
 OpenConnect prefers to use a UDP-based tunnel whenever possible, for performance reasons.
 
 You should only select this option if your connection is unreliable or non-functional without it.</property>
-        <property name="use_underline">True</property>
-        <property name="focus_on_click">True</property>
-        <property name="active">False</property>
-        <property name="inconsistent">False</property>
-        <property name="draw_indicator">True</property>
-      </object>
-    </child>
-    <child>
-      <object class="GtkLabel" id="token_label">
-        <property name="visible">False</property>
-        <property name="label" translatable="yes">Software Token Authentication</property>
-        <property name="use_underline">False</property>
-        <attributes>
-          <attribute name="weight" value="bold"/>
-        </attributes>
-        <property name="justify">GTK_JUSTIFY_LEFT</property>
-        <property name="wrap">False</property>
-        <property name="selectable">False</property>
-        <property name="xalign">0</property>
-        <property name="margin_top">12</property>
-        <property name="margin_bottom">6</property>
-        <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-        <property name="width_chars">-1</property>
-        <property name="single_line_mode">False</property>
-      </object>
-      <packing>
-          <property name="left_attach">0</property>
-          <property name="top_attach">14</property>
-          <property name="width">2</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkLabel" id="token_mode_label">
-        <property name="visible">False</property>
-        <property name="label" translatable="yes">Token _Mode</property>
-        <property name="use_underline">True</property>
-        <property name="use_markup">False</property>
-        <property name="justify">GTK_JUSTIFY_LEFT</property>
-        <property name="wrap">False</property>
-        <property name="selectable">False</property>
-        <property name="xalign">1</property>
-        <property name="yalign">0.5</property>
-        <property name="mnemonic_widget">token_mode</property>
-        <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-        <property name="width_chars">-1</property>
-        <property name="single_line_mode">False</property>
-      </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">15</property>
-      </packing>
-    </child>
-    <child>
-      <object class="GtkComboBox" id="token_mode">
-        <property name="visible">False</property>
-        <property name="model">token_mode_list</property>
-        <property name="active">0</property>
-        <property name="hexpand">True</property>
-        <child>
-          <object class="GtkCellRendererText" id="renderer2"/>
-          <attributes>
-            <attribute name="text">0</attribute>
-          </attributes>
+          </object>
         </child>
       </object>
-      <packing>
-        <property name="left_attach">1</property>
-        <property name="top_attach">15</property>
-      </packing>
     </child>
     <child>
-      <object class="GtkLabel" id="token_secret_label">
-        <property name="visible">False</property>
-        <property name="label" translatable="yes">Token Sec_ret</property>
-        <property name="use_underline">True</property>
-        <property name="use_markup">False</property>
-        <property name="justify">GTK_JUSTIFY_LEFT</property>
-        <property name="wrap">False</property>
-        <property name="selectable">False</property>
-        <property name="xalign">1</property>
-        <property name="yalign">0.5</property>
-        <property name="mnemonic_widget">token_secret</property>
-        <property name="ellipsize">PANGO_ELLIPSIZE_NONE</property>
-        <property name="width_chars">-1</property>
-        <property name="single_line_mode">False</property>
-        <property name="sensitive">False</property>
+      <object class="AdwPreferencesGroup" id="sta_group">
+        <property name="title" translatable="1">Software Token Authentication</property>
+        <child>
+          <object class="AdwComboRow" id="token_mode">
+            <property name="title" translatable="1">_Token Mode</property>
+            <property name="use-underline">true</property>
+            <property name="model">
+              <object class="GtkStringList">
+                <items>
+                  <item translatable="yes">Disabled</item>
+                  <item translatable="yes">RSA SecurID — read from ~/.stokenrc</item>
+                  <item translatable="yes">RSA SecurID — manually entered</item>
+                  <item translatable="yes">TOTP — manually entered</item>
+                  <item translatable="yes">HOTP — manually entered</item>
+                  <item translatable="yes">Yubikey OATH</item>
+                </items>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwEntryRow" id="token_secret">
+            <property name="title" translatable="1">Token Sec_ret</property>
+            <property name="use-underline">true</property>
+          </object>
+        </child>
       </object>
-      <packing>
-        <property name="left_attach">0</property>
-        <property name="top_attach">16</property>
-      </packing>
     </child>
     <child>
-      <object class="GtkTextView" id="token_secret">
-        <property name="height-request">60</property>
-        <property name="visible">False</property>
-        <property name="can_focus">True</property>
-        <property name="wrap_mode">char</property>
-        <property name="accepts_tab">False</property>
-        <property name="sensitive">False</property>
+      <object class="AdwPreferencesGroup">
+        <property name="title" translatable="1">Certificates</property>
+        <child>
+          <object class="NmaCertChooser" id="mca_cert_chooser">
+            <property name="flags">8</property>
+            <property name="title">Machine</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">10</property>
+              <property name="column-span">2</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="NmaCertChooser" id="user_cert_chooser">
+            <property name="flags">8</property>
+            <property name="title">User</property>
+            <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">11</property>
+              <property name="column-span">2</property>
+            </layout>
+          </object>
+        </child>
       </object>
-      <packing>
-        <property name="left-attach">0</property>
-        <property name="top-attach">17</property>
-        <property name="width">2</property>
-      </packing>
     </child>
-  </object>
-  <object class="GtkListStore" id="token_mode_list">
-    <columns>
-      <!-- column-name legible -->
-      <column type="gchararray"/>
-      <!-- column-name pref_value -->
-      <column type="gchararray"/>
-      <!-- column-name token_type -->
-      <column type="gchararray"/>
-      <!-- column-name token_secret_editable -->
-      <column type="gboolean"/>
-    </columns>
-    <data>
-      <row>
-        <col id="0" translatable="yes">Disabled</col>
-        <col id="1" translatable="no">disabled</col>
-        <col id="2" translatable="no">any</col>
-        <col id="3" translatable="no">False</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">RSA SecurID — read from ~/.stokenrc</col>
-        <col id="1" translatable="no">stokenrc</col>
-        <col id="2" translatable="no">stoken</col>
-        <col id="3" translatable="no">False</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">RSA SecurID — manually entered</col>
-        <col id="1" translatable="no">manual</col>
-        <col id="2" translatable="no">stoken</col>
-        <col id="3" translatable="no">True</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">TOTP — manually entered</col>
-        <col id="1" translatable="no">totp</col>
-        <col id="2" translatable="no">totp</col>
-        <col id="3" translatable="no">True</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">HOTP — manually entered</col>
-        <col id="1" translatable="no">hotp</col>
-        <col id="2" translatable="no">hotp</col>
-        <col id="3" translatable="no">True</col>
-      </row>
-      <row>
-        <col id="0" translatable="yes">Yubikey OATH</col>
-        <col id="1" translatable="no">yubioath</col>
-        <col id="2" translatable="no">yubioath</col>
-        <col id="3" translatable="no">True</col>
-      </row>
-    </data>
-  </object>
-  <object class="GtkListStore" id="protocol_combo_list">
-    <columns>
-      <!-- column-name legible -->
-      <column type="gchararray"/>
-      <!-- column-name protocol_value -->
-      <column type="gchararray"/>
-      <!-- column-name protocol_flags -->
-      <column type="gint"/>
-    </columns>
-  </object>
-  <object class="GtkSizeGroup" id="labels">
-    <widgets>
-      <widget name="vpn_protocol_label"/>
-      <widget name="gateway_label"/>
-      <widget name="proxy_label"/>
-      <widget name="csd_trojan_script_label"/>
-      <widget name="reported_os_label"/>
-      <widget name="token_mode_label"/>
-      <widget name="token_secret_label"/>
-    </widgets>
   </object>
 </interface>
+
