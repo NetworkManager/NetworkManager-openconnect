@@ -28,7 +28,7 @@ BuildRequires: intltool gettext libtool
 BuildRequires: pkgconfig(libxml-2.0)
 BuildRequires: pkgconfig(openconnect) >= %{openconnect_version}
 BuildRequires: pkgconfig(gcr-3) >= 3.4
-BuildRequires: pkgconfig(webkit2gtk-4.0)
+BuildRequires: (pkgconfig(webkit2gtk-4.1) or pkgconfig(webkit2gtk-4.0))
 %if %with gtk4
 BuildRequires: pkgconfig(gtk4) >= 4.0
 BuildRequires: pkgconfig(libnma-gtk4) >= 1.8.33

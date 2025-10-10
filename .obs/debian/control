@@ -13,7 +13,7 @@ Build-Depends: debhelper-compat (= 12),
                libnm-dev,
                libnma-dev,
 #               libnma-gtk4-dev,
-               libwebkit2gtk-4.0-dev,
+               libwebkit2gtk-4.1-dev | libwebkit2gtk-4.0-dev,
                libopenconnect-dev (>= 8.20~),
                libsecret-1-dev,
                libxml2-dev
