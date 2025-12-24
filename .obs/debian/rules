@@ -11,6 +11,13 @@ else
 	GTK4=no
 endif
 
+# Support older distros where libexec is not used by NM
+ifeq ("$(shell dpkg --compare-versions $$(dpkg-query -W -f '$${Version}' libnm-dev) lt 1.44.2-3~ && echo yes)","yes")
+	LIBEXEC=--libexecdir=/usr/lib/NetworkManager
+else
+	LIBEXEC=
+endif
+
 %:
 	dh $@
 
@@ -18,8 +25,7 @@ override_dh_auto_configure:
 	intltoolize --force
 	dh_auto_configure -- \
 		--with-gnome \
-		--with-gtk4=$(GTK4) \
-		--libexecdir=/usr/lib/NetworkManager \
+		--with-gtk4=$(GTK4) $(LIBEXEC) \
 		--disable-static
 
 execute_before_dh_install:
