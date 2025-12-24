@@ -22,7 +22,6 @@
     pkgconfig
     libxml2-devel
     openconnect-devel
-    webkit2gtk3-devel
     webkit2gtk4.1-devel
 
 .fedora_from_dist: &fedora_from_dist
