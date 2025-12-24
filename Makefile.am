@@ -290,6 +290,9 @@ nm-openconnect-service.name: $(srcdir)/nm-openconnect-service.name.in
 	    -e 's|[@]PLUGINDIR[@]/|@NM_PLUGIN_DIR_NAME_FILE@|g' \
 	    $< >$@
 
+nmopenconnectsysusersdir = $(prefix)/lib/sysusers.d
+nmopenconnectsysusers_DATA = nm-openconnect-sysusers.conf
+
 DISTCHECK_CONFIGURE_FLAGS = \
 	--enable-more-warnings=yes \
 	--with-gtk4
@@ -305,6 +308,7 @@ ACLOCAL_AMFLAGS = -I m4
 
 EXTRA_DIST += \
 	nm-openconnect-service.name.in \
+	$(nmopenconnectsysusers_DATA) \
 	$(dbusservice_DATA) \
 	$(desktop_in_files) \
 	$(icon_DATA) \
