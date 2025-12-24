@@ -5,15 +5,7 @@ set -e
 case "$1" in
     configure)
         # Create user account for dropping privileges to run openconnect.
-        adduser --system --quiet \
-            --home /var/lib/NetworkManager --no-create-home \
-            --gecos "NetworkManager OpenConnect plugin" \
-            --group nm-openconnect
-
-        # Ask dbus to reload the VPN service config file.
-        if [ -x "/etc/init.d/dbus" ]; then
-            invoke-rc.d dbus force-reload || true
-        fi
+        systemd-sysusers ${DPKG_ROOT:+--root="$DPKG_ROOT"} nm-openconnect-sysusers.conf
         ;;
     abort-upgrade|abort-remove|abort-deconfigure)
         ;;

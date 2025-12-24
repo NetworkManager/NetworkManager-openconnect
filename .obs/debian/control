@@ -3,7 +3,6 @@ Maintainer: OpenConnect Team <openconnect-devel@lists.infradead.org>
 Section: net
 Priority: optional
 Build-Depends: debhelper-compat (= 12),
-               dh-sequence-installsysusers | debhelper (<< 13.10~),
                intltool,
                libgcr-3-dev,
                libglib2.0-dev,
