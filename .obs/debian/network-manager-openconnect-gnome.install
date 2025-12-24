@@ -1,3 +1,2 @@
 usr/lib/*/NetworkManager/libnm-*vpn-plugin-openconnect-editor.so
-usr/lib/NetworkManager/nm-openconnect-auth-dialog
 usr/share/metainfo/
