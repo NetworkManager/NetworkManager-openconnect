@@ -3,6 +3,7 @@ Maintainer: OpenConnect Team <openconnect-devel@lists.infradead.org>
 Section: net
 Priority: optional
 Build-Depends: debhelper-compat (= 12),
+               dh-sequence-installsysusers | debhelper (<< 13.10~),
                intltool,
                libgcr-3-dev,
                libglib2.0-dev,
@@ -18,15 +19,14 @@ Build-Depends: debhelper-compat (= 12),
                libsecret-1-dev,
                libxml2-dev
 Rules-Requires-Root: no
-Standards-Version: 4.6.0
+Standards-Version: 4.7.2
 Vcs-Browser: https://gitlab.gnome.org/GNOME/NetworkManager-openconnect
 Vcs-Git: https://gitlab.gnome.org/GNOME/NetworkManager-openconnect.git
 Homepage: https://www.gnome.org/projects/NetworkManager/
 
 Package: network-manager-openconnect
 Architecture: any
-Depends: adduser,
-         network-manager,
+Depends: network-manager,
          openconnect,
          ${misc:Depends},
          ${shlibs:Depends}
