@@ -39,9 +39,6 @@ Requires: openconnect      >= %{openconnect_version}
 Requires: dbus-common
 Obsoletes: NetworkManager-openconnect < 1.2.3-0
 
-Requires(pre): %{_sbindir}/useradd
-Requires(pre): %{_sbindir}/groupadd
-
 # Name used in Fedora
 Provides: NetworkManager-openconnect = %{version}
 
@@ -86,10 +83,7 @@ rm -f %{buildroot}%{_libdir}/NetworkManager/lib*.la
 rm -rf %{buildroot}%{_datadir}/locale
 
 %pre
-%{_sbindir}/groupadd -r nm-openconnect &>/dev/null || :
-%{_sbindir}/useradd  -r -s /sbin/nologin -d / -M \
-                     -c 'NetworkManager user for OpenConnect' \
-                     -g nm-openconnect nm-openconnect &>/dev/null || :
+%{_bindir}/systemd-sysusers nm-openconnect-sysusers.conf &>/dev/null || :
 
 %if 0%{?rhel} && 0%{?rhel} <= 7
 %post
@@ -111,6 +105,7 @@ fi
 %{_libdir}/NetworkManager/libnm-vpn-plugin-openconnect.so
 %{_datadir}/dbus-1/system.d/nm-openconnect-service.conf
 %{_prefix}/lib/NetworkManager/VPN
+%{_prefix}/lib/sysusers.d/nm-openconnect-sysusers.conf
 %{_libexecdir}/nm-openconnect-service
 %{_libexecdir}/nm-openconnect-service-openconnect-helper
 %doc AUTHORS ChangeLog NEWS
